@@ -14,6 +14,7 @@
     "ejs": "~2.5.5",
     "express": "~4.14.1",
     "express-ejs-layouts": "~2.2.0",
+    "jquery": "^3.2.1",
     "jscroll": "^2.3.9",
     "medium-editor": "^5.23.2",
     "medium-editor-insert-plugin": "^2.4.1",
