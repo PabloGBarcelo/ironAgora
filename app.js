@@ -1,11 +1,11 @@
-const express      = require('express');
-const path         = require('path');
-const favicon      = require('serve-favicon');
-const logger       = require('morgan');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
 const cookieParser = require('cookie-parser');
-const bodyParser   = require('body-parser');
-const layouts      = require('express-ejs-layouts');
-const mongoose     = require('mongoose');
+const bodyParser = require('body-parser');
+const layouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
 
 
 mongoose.connect('mongodb://localhost/second-project');
@@ -16,7 +16,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main-layout');
-app.use(expressLayouts);
+app.use(layouts);
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
