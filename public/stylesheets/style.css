@@ -7,16 +7,21 @@ a {
   color: #00B7FF;
 }
 
-.navbar {
-    border: 1px solid #7ce1b7;
-    text-align: center;
-    color: #7ce1b7;
-    font-family: fantasy;
+  .navbar {
+      text-align: center;
+      width: 80%;
+      margin: 0 auto;
+      border-bottom: 1px solid black;
   }
 
   .navbar > p {
       margin: 0;
       margin-top: 5px;
+  }
+
+  .navbar > img {
+    width: 153px;
+    padding: 8px;
   }
 
   .separation {
@@ -30,11 +35,27 @@ a {
       width: 50%;
       margin: 0 auto;
       text-align: center;
+      font-family: sans-serif;
+      font-weight: 100;
+      color: gray;
+      border: 0.5px solid #b2b2b26b;
+      border-radius: 4px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 1px 1px 20px 0px rgba(65, 65, 65, 0.13)
   }
 
+  .loginMedium {
+      border-right: 1px solid #a9a9a94f;
+  }
+
+  .loginButtons {
+    margin-top: 15px;
+  }
+  
   .btn {
       border: 1px solid gray;
-      width: 30%;
+      width: 70%;
       margin: 0 auto;
       border-radius: 5px;
       padding: 7px;
@@ -69,4 +90,12 @@ a {
   i.fa.fa-github{
     margin-right: 15px;
     font-size: 16px;
+  }
+
+  .inline-block{
+    display: inline-block;
+  }
+
+  .col40{
+    width: 48%;
   }
