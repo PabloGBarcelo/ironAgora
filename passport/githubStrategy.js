@@ -8,40 +8,27 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://localhost:3000/auth/github/callback"
   },
   (accessToken, refreshToken, profile, cb) => {
-    User.findOne({ githubId: profile.id }, (err, user) => {
-      if (err) { return cb(err); }
-      if (user) { return cb(null, user); }
+    User.findOne({ githubId: profile.id })
+      .then(user => {
+        if (user) {
+          return cb(null, user);
+        } else {
+          const newUser = new User({
+            username: profile.username,
+            name: profile.displayName,
+            githubId: profile.id,
+            avatar: profile.photos[0].value,
+            forum: 'Web'
+          });
 
-      const newUser = new User({
-        username: profile.username,
-        name: profile.displayName,
-        githubId: profile.id,
-        avatar: profile.photos[0].value,
-        forum: 'Web'
+          newUser.save((err) => {
+            if (err) { return cb(err); }
+            cb(null, newUser);
+          });
+        }
+      })
+      .catch(error => {
+        return cb(error);
       });
-
-      newUser.save((err) => {
-        if (err) { return cb(err); }
-        cb(null, newUser);
-      });
-    });
   }
 ));
-
-//User.find({ email })
-//   .then(user => {
-//     if (!user) { throw new Error(`There isn't an account with email ${email}.`); }
-//     if (!bcrypt.compareSync(password, user.password)) {
-//       req.session.currentUser = user;
-//       res.redirect('/');
-//     } else {
-//       throw new Error('Invalid password');
-//     }
-//     req.session.currentUser = user;
-//     res.redirect('/');
-//   })
-//   .catch(error => {
-//     return res.render('auth/login', {
-//       errorMessage: error.message
-//     });
-//   });
