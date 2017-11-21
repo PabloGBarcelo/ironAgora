@@ -3,11 +3,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     username: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
     name: String,
-    surname: String,
-    mediumId: String,
+    email: String,
+    //slackId: String,
     githubId: String,
     avatar: String,
     is_admin: { type: Boolean, required: true, default: false },

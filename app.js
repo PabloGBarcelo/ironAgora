@@ -11,12 +11,15 @@ const flash = require("connect-flash");
 
 const indexRoutes = require('./routes/index');
 const authMediumRoutes = require('./routes/authMedium');
-//const authGithub = require('./routes/authGithub');
+const authGithub = require('./routes/authGithub');
 const forumRoutes = require('./routes/forum');
 
-mongoose.connect('mongodb://localhost/second-project');
-
 const app = express();
+
+const dbURL = 'mongodb://localhost/second-project';
+mongoose.connect(dbURL).then(() => {
+  console.log(dbURL);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoutes);
 app.use('/auth', authMediumRoutes);
-//app.use('/auth', authGithub);
+app.use('/auth', authGithub);
 app.use('/forum', forumRoutes);
 
 // catch 404 and forward to error handler

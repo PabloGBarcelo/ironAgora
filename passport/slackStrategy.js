@@ -1,6 +1,6 @@
 const passport = require("passport");
 const User = require('../models/User');
-const MediumStrategy = require('passport-medium').Strategy;
+const MediumStrategy = require('passport-slack').Strategy;
 
 passport.use(new MediumStrategy({
     clientID: '8fc3d966003d',

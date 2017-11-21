@@ -1,6 +1,6 @@
 const passport = require("passport");
-//require('./githubStrategy');
-require('./mediumStrategy');
+require('./githubStrategy');
+require('./slackStrategy');
 require('./serializers');
 
 module.exports = (app) => {
