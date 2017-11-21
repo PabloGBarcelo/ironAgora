@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: { type: String, required: true },
+    username: String,
     name: String,
     email: String,
-    //slackId: String,
+    slackId: String,
     githubId: String,
     avatar: String,
     is_admin: { type: Boolean, required: true, default: false },

@@ -8,15 +8,10 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://localhost:3000/auth/github/callback"
   },
   (accessToken, refreshToken, profile, cb) => {
-    //User.findOrCreate({ githubId: profile.id }, function (err, user) {
-    //  return cb(err, user);
-    //});
     User.findOne({ githubId: profile.id }, (err, user) => {
-      console.log('Checking user');
       if (err) { return cb(err); }
       if (user) { return cb(null, user); }
 
-      console.log('Creating new user');
       const newUser = new User({
         username: profile.username,
         name: profile.displayName,
@@ -25,7 +20,6 @@ passport.use(new GitHubStrategy({
         forum: 'Web'
       });
 
-      console.log('Saving new user');
       newUser.save((err) => {
         if (err) { return cb(err); }
         cb(null, newUser);

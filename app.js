@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 
 const indexRoutes = require('./routes/index');
 const authGithub = require('./routes/authGithub');
+const authSlack = require('./routes/authSlack');
 const forumRoutes = require('./routes/forum');
 
 const app = express();
@@ -55,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoutes);
 app.use('/auth', authGithub);
+app.use('/auth', authSlack);
 app.use('/forum', forumRoutes);
 
 // catch 404 and forward to error handler
