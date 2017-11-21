@@ -10,7 +10,6 @@ const mongoose = require('mongoose');
 const flash = require("connect-flash");
 
 const indexRoutes = require('./routes/index');
-const authMediumRoutes = require('./routes/authMedium');
 const authGithub = require('./routes/authGithub');
 const forumRoutes = require('./routes/forum');
 
@@ -55,7 +54,6 @@ app.use('/dist/jquery', express.static(path.join(__dirname, 'node_modules/jquery
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoutes);
-app.use('/auth', authMediumRoutes);
 app.use('/auth', authGithub);
 app.use('/forum', forumRoutes);
 
