@@ -10,4 +10,8 @@ router.get('/login', (req, res, next) => {
   res.render('error');
 });
 
+router.get('/forumtest', (req, res, next) => {
+  res.render('forum/index');
+});
+
 module.exports = router;

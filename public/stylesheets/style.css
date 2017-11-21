@@ -52,7 +52,7 @@ a {
   .loginButtons {
     margin-top: 15px;
   }
-  
+
   .btn {
       border: 1px solid gray;
       width: 70%;
@@ -69,7 +69,7 @@ a {
     font-size: 14px;
   }
 
-  i.fa.fa-medium{
+  i.fa.fa-slack{
     color: gray;
     margin-right: 15px;
   }
@@ -98,4 +98,18 @@ a {
 
   .col40{
     width: 48%;
+  }
+
+  .tagsNav >li{
+    display: inline;
+    margin-right: 10px;
+  }
+
+  .tagsNav {
+      padding: 0;
+  }
+
+  .tagsBar {
+    width: 70%;
+    margin: 0 auto;
   }
