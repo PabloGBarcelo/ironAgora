@@ -1,6 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const router = express.Router();
 
 /* GET home page. */
@@ -9,6 +8,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
+  res.render('error');
 });
 
 module.exports = router;

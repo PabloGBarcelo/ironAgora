@@ -2,16 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: { type: String, required: true },
-    surname: { type: String, required: true },
+    username: { type: String, required: true },
     email: { type: String, required: true },
-    twitter: String,
-    linkedin: String,
-    github: String,
-    blog: String,
-    avatar_thumb: String,
-    avatar_mini: String,
-    is_admin: { type: Boolean, required: true },
+    password: { type: String, required: true },
+    name: type: String,
+    surname: type: String,
+    avatar: String,
+    is_admin: { type: Boolean, required: true, default: false },
     _courses: [{type: Schema.Types.ObjectId, ref:'Course'}]
   },
   {
