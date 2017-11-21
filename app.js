@@ -7,6 +7,10 @@ const bodyParser = require('body-parser');
 const layouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 
+const indexRoutes = require('./routes/index');
+const authMediumRoutes = require('./routes/authMedium');
+//const authGithub = require('./routes/authGithub');
+const forumRoutes = require('./routes/forum');
 
 mongoose.connect('mongodb://localhost/second-project');
 
@@ -17,8 +21,23 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main-layout');
 app.use(layouts);
+
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+//app.locals.title = 'Express - Generated with IronGenerator';
+
+// Authorization and session.js
+app.use(session({
+  secret: "our-passport-local-strategy-app",
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(flash());
+require('./passport')(app);
+
+app.use((req,res,next) => {
+  res.locals.title = "IronAgora";
+  next();
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,8 +49,10 @@ app.use(cookieParser());
 app.use('/dist/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const index = require('./routes/index');
-app.use('/', index);
+app.use('/', indexRoutes);
+app.use('/auth', authMediumRoutes);
+//app.use('/auth', authGithub);
+app.use('/forum', forumRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
