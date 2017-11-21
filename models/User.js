@@ -9,7 +9,7 @@ const userSchema = new Schema({
     surname: type: String,
     avatar: String,
     is_admin: { type: Boolean, required: true, default: false },
-    _courses: [{type: Schema.Types.ObjectId, ref:'Course'}]
+    forum: { type: String, enum:['UX','Web'], default: 'UX' }
   },
   {
     timestamp: {

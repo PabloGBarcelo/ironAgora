@@ -1,8 +1,72 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 a {
   color: #00B7FF;
 }
+
+.navbar {
+    border: 1px solid #7ce1b7;
+    text-align: center;
+    color: #7ce1b7;
+    font-family: fantasy;
+  }
+
+  .navbar > p {
+      margin: 0;
+      margin-top: 5px;
+  }
+
+  .separation {
+    border: 0.5px solid #efefef;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .loginCenter {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+  }
+
+  .btn {
+      border: 1px solid gray;
+      width: 30%;
+      margin: 0 auto;
+      border-radius: 5px;
+      padding: 7px;
+  }
+
+  .btn-medium > a{
+    color: black;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 14px;
+  }
+
+  i.fa.fa-medium{
+    color: gray;
+    margin-right: 15px;
+  }
+
+  .btn-github {
+      background: #414141;
+  }
+
+  .btn-github > a{
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 14px;
+  }
+
+  i.fa.fa-github{
+    margin-right: 15px;
+    font-size: 16px;
+  }
