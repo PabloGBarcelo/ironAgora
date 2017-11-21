@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const questionSchema = new Schema({
-  _idCourses: { type:Schema.Types.ObjectId, ref:'Course' },
   title: String,
   content: String,
   _authorId: { type:Schema.Types.ObjectId, ref:'User' },
   attachments: [String],
   tags: [ String ],
+  forum: { type: String, enum:['UX','Web'], default: 'UX' },
   isClosed: { type: Boolean, default: false },
   isSurvey: { type: Boolean, default: false },
 }, {
