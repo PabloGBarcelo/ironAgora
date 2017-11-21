@@ -9,11 +9,13 @@
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "~1.16.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
     "ejs": "~2.5.5",
     "express": "~4.14.1",
     "express-ejs-layouts": "~2.2.0",
+    "express-session": "^1.15.6",
     "jquery": "^3.2.1",
     "jscroll": "^2.3.9",
     "medium-editor": "^5.23.2",

@@ -4,8 +4,10 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const session = require("express-session");
 const layouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const flash = require("connect-flash");
 
 const indexRoutes = require('./routes/index');
 const authMediumRoutes = require('./routes/authMedium');
