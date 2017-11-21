@@ -8,11 +8,10 @@ const session = require("express-session");
 const layouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const flash = require("connect-flash");
-
 const indexRoutes = require('./routes/index');
 const authGithub = require('./routes/authGithub');
 const forumRoutes = require('./routes/forum');
-
+const questionRoutes = require('./routes/question');
 const app = express();
 
 const dbURL = 'mongodb://localhost/second-project';
@@ -51,11 +50,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/dist/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+app.use('/dist/medium-editor', express.static(path.join(__dirname, '/node_modules/medium-editor/dist')));
+app.use('/dist/handlebars', express.static(path.join(__dirname, 'node_modules/handlebars/dist')));
+app.use('/dist/blueimp-file-upload', express.static(path.join(__dirname, 'node_modules/blueimp-file-upload/js')));
+app.use('/dist/medium-editor-insert-plugin', express.static(path.join(__dirname, 'node_modules/medium-editor-insert-plugin/dist/js')));
+app.use('/dist/medium-editor', express.static(path.join(__dirname, 'node_modules/medium-editor/dist/js')));
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoutes);
 app.use('/auth', authGithub);
 app.use('/forum', forumRoutes);
+app.use('/forum', questionRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
