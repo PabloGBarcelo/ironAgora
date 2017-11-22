@@ -15,6 +15,7 @@ const authGithub = require('./routes/authGithub');
 const authSlack = require('./routes/authSlack');
 const forumRoutes = require('./routes/forum');
 const questionRoutes = require('./routes/question');
+const userRoutes = require('./routes/user');
 
 const app = express();
 
@@ -70,6 +71,7 @@ app.use('/auth', authGithub);
 app.use('/auth', authSlack);
 app.use('/forum', forumRoutes);
 app.use('/forum', questionRoutes);
+app.use('/user', userRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
