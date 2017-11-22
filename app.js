@@ -13,6 +13,7 @@ const authGithub = require('./routes/authGithub');
 const authSlack = require('./routes/authSlack');
 const forumRoutes = require('./routes/forum');
 const questionRoutes = require('./routes/question');
+const passport = require('passport')
 const app = express();
 
 const dbURL = 'mongodb://localhost/second-project';
@@ -26,13 +27,12 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main-layout');
 app.use(layouts);
 
-// default value for title local
-//app.locals.title = 'Express - Generated with IronGenerator';
-
+// Read cookies
+app.use(cookieParser());
 // Authorization and session.js
 app.use(session({
   secret: "our-passport-local-strategy-app",
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }));
 app.use(flash());
@@ -47,16 +47,17 @@ app.use((req,res,next) => {
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true,
+                                parameterLimit: 100000,
+                                limit: '50mb'}));
 
 app.use('/dist/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use('/dist/medium-editor', express.static(path.join(__dirname, '/node_modules/medium-editor/dist')));
 app.use('/dist/handlebars', express.static(path.join(__dirname, 'node_modules/handlebars/dist')));
 app.use('/dist/blueimp-file-upload', express.static(path.join(__dirname, 'node_modules/blueimp-file-upload/js')));
-app.use('/dist/medium-editor-insert-plugin', express.static(path.join(__dirname, 'node_modules/medium-editor-insert-plugin/dist/js')));
-app.use('/dist/medium-editor', express.static(path.join(__dirname, 'node_modules/medium-editor/dist/js')));
-
+app.use('/dist/medium-editor-insert-plugin', express.static(path.join(__dirname, 'node_modules/medium-editor-insert-plugin')));
+app.use('/dist/medium-editor', express.static(path.join(__dirname, 'node_modules/medium-editor/dist')));
+app.use('/dist/jquery-sortable', express.static(path.join(__dirname, 'node_modules/jquery-sortable/source/js')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
