@@ -12,12 +12,14 @@
   <link rel="stylesheet" href="/dist/medium-editor/css/medium-editor.min.css">
   <link rel="stylesheet" href="/dist/medium-editor/css/themes/default.css">
   <link rel="stylesheet" href="/dist/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css">
+  <link rel="stylesheet" href="/stylesheets/jquery.tagsinput.min.css">
   <% } %>
   <title>IronAgora</title>
   </head>
   <body>
   <%- body %>
   <% if(typeof(medium) != 'undefined') {%>
+  <script type="text/javascript" src="/javascripts/jquery.tagsinput.min.js"></script>
   <script type="text/javascript" src="/dist/medium-editor/js/medium-editor.js"></script>
   <script type="text/javascript" src="/dist/handlebars/handlebars.runtime.min.js"></script>
   <script type="text/javascript" src="/dist/blueimp-file-upload/vendor/jquery.ui.widget.js"></script>
@@ -26,7 +28,7 @@
   <script type="text/javascript" src="/dist/medium-editor-insert-plugin/dist/js/medium-editor-insert-plugin.min.js"></script>
   <script type="text/javascript" src="/dist/jquery-sortable/jquery-sortable-min.js"></script>
   <script>
-
+        $('#tags').tagsInput();
         var editor = new MediumEditor('.editable');
         var editor = new MediumEditor('.editable2');
         $(function () {
