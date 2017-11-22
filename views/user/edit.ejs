@@ -1,3 +1,6 @@
+<div class="navbar">
+  <img src="/images/logo.png">
+</div>
 <form action="/user/edit/<%= _id %>" method="post" enctype="multipart/form-data">
   <% if (typeof(error) !== 'undefined'){ %>
     <div class="alert alert-danger">
@@ -8,23 +11,27 @@
       </ul>
     </div>
     <% } %>
-      <div class="form-group">
-        <label for="username">Username</label>
+      <div class="form-group row">
+        <label for="username">Username</label><br>
         <input type="text" name="username" class="form-control" value="<%= username || '' %>">
       </div>
-      <div class="form-group">
-        <label for="name">Name</label>
+      <br>
+      <div class="form-group row">
+        <label for="name">Name</label><br>
         <input type="text" name="name" class="form-control" value="<%= name || '' %>">
       </div>
-      <div class="form-group">
-        <label for="email">Email</label>
+      <br>
+      <div class="form-group row">
+        <label for="email">Email</label><br>
         <input type="email" name="email" class="form-control" value="<%= email || '' %>">
       </div>
-      <div class="form-group">
-        <label for="avatar">Avatar</label>
+      <br>
+      <div class="form-group row">
+        <label for="avatar">Avatar</label><br>
         <input type="file" name="avatar" class="form-control">
       </div>
-      <div class="form-group">
-        <button type="submit">Update profile</button>
+      <br>
+      <div class="form-group row">
+        <button class="btn btn-primary" type="submit">Update profile</button>
       </div>
 </form>

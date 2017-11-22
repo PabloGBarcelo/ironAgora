@@ -6,11 +6,22 @@ const upload = multer({ dest: './uploads/user' });
 const User = require('../models/User');
 
 
-router.get('/', (req, res, next) => {
-  res.render('user/info', req.user);
+router.get('/list',(req, res, next) => {
+  User.find({ forum: req.user.forum })
+    .then(users => {
+      console.log(users);
+      res.render('user/list', {users});
+    })
+    .catch(error => {
+      res.render('error', error);
+    });
 });
 
-router.get('/edit', (req, res, next) => {
+router.get('/edit/:id', (req, res, next) => {
+  res.render('user/edit', req.user);
+});
+
+router.post('/edit/:id', (req, res, next) => {
   res.render('user/edit', req.user);
 });
 
@@ -30,5 +41,17 @@ router.get('/edit', (req, res, next) => {
 //      return next(error);
 //    });
 //});
+
+router.get('/:id', (req, res, next) => {
+  //console.log(res.locals.user);
+  //console.log(req.user);
+  User.findOne({ '_id': req.params.id })
+    .then(user => {
+      res.render('user/info', res.locals.user);
+    })
+    .catch(error => {
+      res.render('error', error);
+    });
+});
 
 module.exports = router;

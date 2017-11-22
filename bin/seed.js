@@ -20,6 +20,20 @@ const users = [
     name: 'Victor Matute',
     email: 'victormatu@sending.com',
     slackId: 'UPW2L28L',
+  },
+  {
+    username: 'nosoyhacker',
+    name: 'Chema alonso',
+    email: 'chema.hack@mail.com',
+    githubId: '83783453',
+    forum: 'Web',
+  },
+  {
+    username: 'nosoyhacker',
+    name: 'Chema alonso',
+    email: 'chema.hack@mail.com',
+    githubId: '97241673',
+    forum: 'Web'
   }
 ];
 

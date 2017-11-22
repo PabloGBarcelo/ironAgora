@@ -34,7 +34,7 @@ app.use(layouts);
 // session and current user
 app.use(session({
   secret: "our-passport-local-strategy-app",
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
