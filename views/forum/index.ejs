@@ -38,7 +38,7 @@
           </div>
           <div class="authorPost">
             <a href="/user/<%=post._authorId.id%>"><span class="authorspan"><%=post._authorId.name%></span></a><br>
-            <span class="createdspan"><%=post.created_at%></span>
+            <span class="createdspan"><%=moment(post.created_at).format('llll')%></span>
           </div>
         </div>
       </div>
