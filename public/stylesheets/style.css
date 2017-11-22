@@ -12,6 +12,7 @@ a {
       width: 80%;
       margin: 0 auto;
       border-bottom: 1px solid black;
+      margin-bottom: 5px;
   }
 
   .navbar > p {
@@ -328,4 +329,18 @@ div.editable2 img {
 
 .flex-inner li {
   width: 100px;
+}
+
+.tagsShow {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 7px;
+    text-align: right;
+}
+
+.tagsMain {
+    margin-top: 13px;
+    border: 1px solid #CCC;
+    padding: 3px;
+    color: #a6a6a6;
 }

@@ -15,7 +15,7 @@ router.post('/new', (req, res, next) => {
     content: req.body.myPost,
     _authorId: req.user.id,
     attachments: "",
-    tags: "",
+    tags: req.body.tags,
     mainPhoto,
     // forum: { type: String, enum:['UX','Web'], default: 'UX' },
     isClosed: false,
@@ -37,6 +37,7 @@ router.post('/:id/edit', (req, res, next) => {
   let editPost = {
     title: req.body.myTitle,
     content: req.body.myPost,
+    tags: req.body.tags,
     mainPhoto
   };
   Question.findByIdAndUpdate(req.params.id, editPost)

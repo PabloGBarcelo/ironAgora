@@ -41,6 +41,11 @@
             <span class="createdspan"><%=post.created_at%></span>
           </div>
         </div>
+        <% if(post.tags!="") {%>
+        <div class="tagsMain">
+          Tags: <%=post.tags %>
+        </div>
+        <%}%>
       </div>
     </div>
     <% }); %>
