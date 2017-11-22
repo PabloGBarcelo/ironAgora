@@ -19,6 +19,20 @@
     <li>More</li>
   </ul>
 </div>
-<div class="posts">
-
-</div>
+<div class="allPosts">
+  <% results.forEach(post => { %>
+    <div class="onePost">
+      <div class="photoMin">
+        <img class="photoForum" src="<%=post.mainPhoto%>">
+      </div>
+      <div class="titleMin">
+        <p><%-post.title%></p>
+      </div>
+      <div class="authorMin">
+        <img class ="authorPic" src="<%=post._authorId.avatar%>">
+        <%=post._authorId.username%>
+        <%=post.created_at%>
+      </div>
+    </div>
+  <% }); %>
+  </div>

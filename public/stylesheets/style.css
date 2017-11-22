@@ -130,7 +130,41 @@ a {
     right: 150px;
 }
 
-.editable {
+.editable, .editable2 {
     width: 80%;
     margin: 0 auto;
+}
+
+.photoForum {
+  width: 100%
+}
+
+.onePost {
+  width: 25%;
+  border: 1px solid #e1e1e1;
+  display: inline-block;
+  margin-right: 40px;
+  vertical-align: top;
+}
+.allPosts{
+  display: flex;
+  align-items: flex-start
+  width: 90%;
+  margin: 0 auto;
+}
+
+.titleMin {
+    font-size: 14px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.authorMin {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.authorPic{
+  width: 20%;
+  border-radius: 50%;
 }
