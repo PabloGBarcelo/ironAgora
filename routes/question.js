@@ -51,4 +51,10 @@ router.get('/:id/show', (req, res, next) => {
           .catch((err) => console.log(err));
 });
 
+router.post('/:id/delete', (req, res, next) => {
+  Question.findByIdAndRemove(req.params.id)
+          .then(() => res.redirect('/forum/'))
+          .catch((err) => console.log(err));
+});
+
 module.exports = router;

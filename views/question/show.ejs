@@ -1,5 +1,8 @@
 <div class="navbar">
   <a href="/forum"><img src="/images/logo.png"></a>
+  <form action="/forum/<%=id%>/remove" method="post" id="deleteStory">
+    <button> Delete </button>
+  </form>
   <form action="/forum/<%=id%>/edit" method="get">
     <div class="newStoryNav">
       <button>Edit</button>

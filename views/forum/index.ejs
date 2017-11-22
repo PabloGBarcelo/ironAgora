@@ -1,8 +1,18 @@
 <div class="navbar">
   <img src="/images/logo.png">
-  <div class="newStoryNav">
+  <div class="fixed-action-btn horizontal click-to-toggle newStoryNav">
+   <a class="btn-floating btn-small white">
+     <i class="fa fa-bars" aria-hidden="true"></i>
+   </a>
+   <ul>
+     <li><a href="/logout" class="btn-floating smaller btn-float-top white"><i class="fa fa-sign-out btn-float-top" aria-hidden="true"></i></a></li>
+     <li><a href="/user/<%=user.id%>"class="btn-floating smaller btn-float-top white"><i class="fa fa-user btn-float-top" aria-hidden="true"></i></a></li>
+     <li><a href="/forum/new" class="btn-floating smaller btn-float-top white"><i class="fa fa-pencil btn-float-top" aria-hidden="true"></i></a></li>
+   </ul>
+ </div>
+  <!-- <div class="newStoryNav">
     <a href="/forum/new">New Story</a>
-  </div>
+  </div> -->
 </div>
 <div class="tagsBar inline">
   <ul class="tagsNav">
@@ -28,9 +38,7 @@
       </div>
       <div class="detailsPost">
         <div class="titleMin">
-          <p>
             <%-post.title%></a>
-          </p>
         </div>
         <div class="authorMin">
           <div class="pic">

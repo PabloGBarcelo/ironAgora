@@ -63,6 +63,7 @@ app.use('/dist/blueimp-file-upload', express.static(path.join(__dirname, 'node_m
 app.use('/dist/medium-editor-insert-plugin', express.static(path.join(__dirname, 'node_modules/medium-editor-insert-plugin')));
 app.use('/dist/medium-editor', express.static(path.join(__dirname, 'node_modules/medium-editor/dist')));
 app.use('/dist/jquery-sortable', express.static(path.join(__dirname, 'node_modules/jquery-sortable/source/js')));
+app.use('/dist/materialize', express.static(path.join(__dirname, 'node_modules/materialize-css/dist')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 

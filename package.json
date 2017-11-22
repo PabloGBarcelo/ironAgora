@@ -24,6 +24,7 @@
     "jquery-sortable": "^0.9.13",
     "jquery-ui": "^1.12.1",
     "jscroll": "^2.3.9",
+    "materialize-css": "^0.100.2",
     "medium-editor": "^5.23.2",
     "medium-editor-insert-plugin": "^2.4.1",
     "mongoose": "~4.8.5",
