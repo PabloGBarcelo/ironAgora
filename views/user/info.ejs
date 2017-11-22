@@ -6,10 +6,29 @@
   <img src="<%= avatar %>" alt="user avatar">
   <a href="/user/edit/<%= user._id %>"><%= name %></a>
 </div>
-<div>
-  <ul>
-    <% questions.forEach(question => {
-
+<div class="allUserPosts">
+  <% questions.forEach(question => { %>
+    <div class="onePost">
+      <div class="photoMin">
+        <a class="mainTitleHref" href="/forum/<%= question._id %>/show">
+        <img class="photoForum" src="<%= question.mainPhoto %>">
+      </div>
+      <div class="detailsPost">
+        <div class="titleMin">
+          <p>
+            <%- question.title %></a>
+          </p>
+        </div>
+        <div class="authorMin">
+          <div class="pic">
+            <img class="authorPic" src="<%= question._authorId.avatar %>">
+          </div>
+          <div class="authorPost">
+            <a href="/user/<%= question._authorId.id %>"><span class="authorspan"><%= question._authorId.username %></span></a><br>
+            <span class="createdspan"><%= question.created_at %></span>
+          </div>
+        </div>
+      </div>
+    </div>
     <% }); %>
-  </ul>
 </div>

@@ -18,7 +18,7 @@ router.get('/list', (req, res, next) => {
 });
 
 router.get('/question', (req, res, next) => {
-  Question.find({ '_authorId': req.user._id })
+  Question.find({ '_authorId': req.user._id }, { sort: { 'created_at': -1 }})
     .then(questions => {
       res.render('user/info', { user: req.user, questions });
     })
