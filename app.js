@@ -56,6 +56,7 @@ app.use(bodyParser.urlencoded({ extended: true,
                                 limit: '50mb'}));
 
 // front libraries to require in layout html file
+app.use('/dist/axios', express.static(path.join(__dirname, 'node_modules/axios/dist')));
 app.use('/dist/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use('/dist/medium-editor', express.static(path.join(__dirname, '/node_modules/medium-editor/dist')));
 app.use('/dist/handlebars', express.static(path.join(__dirname, 'node_modules/handlebars/dist')));
