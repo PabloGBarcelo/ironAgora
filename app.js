@@ -51,18 +51,19 @@ app.use((req,res,next) => {
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true,
+                                parameterLimit: 100000,
+                                limit: '50mb'}));
 
 // front libraries to require in layout html file
 app.use('/dist/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use('/dist/medium-editor', express.static(path.join(__dirname, '/node_modules/medium-editor/dist')));
 app.use('/dist/handlebars', express.static(path.join(__dirname, 'node_modules/handlebars/dist')));
 app.use('/dist/blueimp-file-upload', express.static(path.join(__dirname, 'node_modules/blueimp-file-upload/js')));
-app.use('/dist/medium-editor-insert-plugin', express.static(path.join(__dirname, 'node_modules/medium-editor-insert-plugin/dist/js')));
-app.use('/dist/medium-editor', express.static(path.join(__dirname, 'node_modules/medium-editor/dist/js')));
+app.use('/dist/medium-editor-insert-plugin', express.static(path.join(__dirname, 'node_modules/medium-editor-insert-plugin')));
+app.use('/dist/medium-editor', express.static(path.join(__dirname, 'node_modules/medium-editor/dist')));
+app.use('/dist/jquery-sortable', express.static(path.join(__dirname, 'node_modules/jquery-sortable/source/js')));
 
-// static files path
 app.use(express.static(path.join(__dirname, 'public')));
 
 // controllers

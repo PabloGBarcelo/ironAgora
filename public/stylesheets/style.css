@@ -129,3 +129,8 @@ a {
     position: absolute;
     right: 150px;
 }
+
+.editable {
+    width: 80%;
+    margin: 0 auto;
+}

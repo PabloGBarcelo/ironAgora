@@ -20,7 +20,6 @@ passport.use(new GitHubStrategy({
             avatar: profile.photos[0].value,
             forum: 'Web'
           });
-
           newUser.save((err) => {
             if (err) { return cb(err); }
             cb(null, newUser);
