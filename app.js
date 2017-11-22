@@ -5,17 +5,20 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require("express-session");
+const MongoStore = require('connect-mongo')(session);
 const layouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const flash = require("connect-flash");
+
 const indexRoutes = require('./routes/index');
 const authGithub = require('./routes/authGithub');
 const authSlack = require('./routes/authSlack');
 const forumRoutes = require('./routes/forum');
 const questionRoutes = require('./routes/question');
-const passport = require('passport')
+
 const app = express();
 
+// connection to mongodb
 const dbURL = 'mongodb://localhost/second-project';
 mongoose.connect(dbURL).then(() => {
   console.log(dbURL);
@@ -27,19 +30,19 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main-layout');
 app.use(layouts);
 
-// Read cookies
-app.use(cookieParser());
-// Authorization and session.js
+// session and current user
 app.use(session({
   secret: "our-passport-local-strategy-app",
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 app.use(flash());
 require('./passport')(app);
 
 app.use((req,res,next) => {
   res.locals.title = "IronAgora";
+  res.locals.user = req.user;
   next();
 });
 
@@ -51,6 +54,7 @@ app.use(bodyParser.urlencoded({ extended: true,
                                 parameterLimit: 100000,
                                 limit: '50mb'}));
 
+// front libraries to require in layout html file
 app.use('/dist/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use('/dist/medium-editor', express.static(path.join(__dirname, '/node_modules/medium-editor/dist')));
 app.use('/dist/handlebars', express.static(path.join(__dirname, 'node_modules/handlebars/dist')));
@@ -61,6 +65,7 @@ app.use('/dist/jquery-sortable', express.static(path.join(__dirname, 'node_modul
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// controllers
 app.use('/', indexRoutes);
 app.use('/auth', authGithub);
 app.use('/auth', authSlack);
