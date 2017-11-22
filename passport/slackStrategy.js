@@ -18,8 +18,10 @@ passport.use(new SlackStrategy({
             name: profile.displayName,
             email: profile.user.email,
             slackId: profile.id,
+            avatar: profile.user.image_192,
             forum: 'UX'
           });
+          
           newUser.save((err) => {
             if (err) { return cb(err); }
             cb(null, newUser);

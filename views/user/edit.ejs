@@ -1,37 +1,37 @@
 <div class="navbar">
   <img src="/images/logo.png">
 </div>
-<form action="/user/edit/<%= _id %>" method="post" enctype="multipart/form-data">
-  <% if (typeof(error) !== 'undefined'){ %>
-    <div class="alert alert-danger">
-      <ul>
-        <li>
-          <%= error %>
-        </li>
-      </ul>
-    </div>
+<div class="container">
+  <form action="/user/edit/<%= _id %>" method="post" enctype="multipart/form-data">
+    <% if (typeof(error) !== 'undefined'){ %>
+      <div class="alert alert-danger">
+        <ul>
+          <li>
+            <%= error %>
+          </li>
+        </ul>
+      </div>
     <% } %>
-      <div class="form-group row">
-        <label for="username">Username</label><br>
-        <input type="text" name="username" class="form-control" value="<%= username || '' %>">
-      </div>
-      <br>
-      <div class="form-group row">
-        <label for="name">Name</label><br>
-        <input type="text" name="name" class="form-control" value="<%= name || '' %>">
-      </div>
-      <br>
-      <div class="form-group row">
-        <label for="email">Email</label><br>
-        <input type="email" name="email" class="form-control" value="<%= email || '' %>">
-      </div>
-      <br>
-      <div class="form-group row">
-        <label for="avatar">Avatar</label><br>
-        <input type="file" name="avatar" class="form-control">
-      </div>
-      <br>
-      <div class="form-group row">
-        <button class="btn btn-primary" type="submit">Update profile</button>
-      </div>
-</form>
+    <ul class="flex-outer">
+      <li>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="<%= username || '' %>">
+      </li>
+      <li>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%= name || '' %>">
+      </li>
+      <li>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="<%= email || '' %>">
+      </li>
+      <li>
+        <label for="avatar">Avatar</label>
+        <input type="file" id="avatar" name="avatar">
+      </li>
+      <li>
+        <button type="submit">Submit</button>
+      </li>
+    </ul>
+  </form>
+</div>
