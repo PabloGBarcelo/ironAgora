@@ -20,7 +20,6 @@ passport.use(new SlackStrategy({
             slackId: profile.id,
             forum: 'UX'
           });
-
           newUser.save((err) => {
             if (err) { return cb(err); }
             cb(null, newUser);

@@ -7,6 +7,7 @@ const questionSchema = new Schema({
   _authorId: { type:Schema.Types.ObjectId, ref:'User' },
   attachments: [String],
   tags: [ String ],
+  mainPhoto: String,
   forum: { type: String, enum:['UX','Web'], default: 'UX' },
   isClosed: { type: Boolean, default: false },
   isSurvey: { type: Boolean, default: false },
