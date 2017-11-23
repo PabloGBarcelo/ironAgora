@@ -5,22 +5,43 @@ const moment = require('moment');
 const Question = require('../models/Question');
 
 router.get('/', ensureLoggedIn('/'), (req, res, next) => {
-  Question.find({}, null, {sort: {created_at: -1}}) // desc
-          .populate('_authorId')
-          .exec()
-          .then((results) => { res.render('forum/index', {results, moment} ); })
-          .catch((err) => console.log(err));
+  Question.find({}, null, { sort: { created_at: -1 }}) // desc
+    .populate('_authorId')
+    .exec()
+    .then(results => {
+      let allTags = {};
+      results.forEach(post => {
+        post.tags[0].split(',').forEach(tag => {
+          if (!allTags[tag] && tag !== '') {
+            allTags[tag] = 1;
+          } else if (tag !== '') {
+            allTags[tag]++;
+          }
+        });
+      });
+
+      let mainTags = Object.keys(allTags);
+      mainTags.sort((keyOne, keyTwo) => {
+        return allTags[keyTwo] - allTags[keyOne];
+      }).splice(8);
+      console.log(mainTags);
+
+      res.render('forum/index', {results, mainTags, moment});
+    })
+    .catch(error => {
+      console.log(error)
+    });
 });
 
 router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
   Question.find()
-          .then(results => {
-            let JSONdata = JSON.stringify({results});
-            res.send(JSONdata);
-          })
-          .catch(error => {
-            console.log(error);
-          });
+    .then(results => {
+      let JSONdata = JSON.stringify({results});
+      res.send(JSONdata);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 });
 
 module.exports = router;

@@ -15,7 +15,6 @@ var checkNewContent = function() {
           }
           $('.allPosts:first').before(`<button class="new-fetch" type="submit">+${diffQuestions} new posts</button>`);
           $('.new-fetch').on('click', (event) => {
-            console.log('Boton pulsado');
             event.preventDefault();
             window.location.reload(true);
           });
@@ -28,20 +27,6 @@ var checkNewContent = function() {
   }, 3000);
 };
 
-function notify() {
-  alert( "clicked" );
-}
-
 $(document).ready(() => {
-
   checkNewContent();
-
-  $('.new-fetch').on('click', notify);
-
-  //$('.new-fetch').on('click', (event) => {
-  //  console.log('Boton pulsado');
-  //  event.preventDefault();
-  //  window.location.reload(true);
-  //});
-
 });
