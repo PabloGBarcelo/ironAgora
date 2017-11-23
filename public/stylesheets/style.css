@@ -211,15 +211,17 @@ a {
 }
 
 .titleMin {
-    font-size: 14px;
-    width: 90%;
-    margin: 0 auto;
-    min-height: 48px;
+  font-size: 20px;
+  width: 90%;
+  margin: 0 auto;
+  min-height: 60px;
+  margin-top: 5px;
 }
 
 .authorMin {
     width: 90%;
     margin: 0 auto;
+    margin-top: 5px;
 }
 
 .authorPic{
@@ -342,11 +344,11 @@ div.editable2 img {
 }
 
 .tagsMain {
-    margin-top: 28px;
+    margin-top: 23px;
     border: 1px solid #CCC;
     padding: 3px;
     color: #a6a6a6;
-     overflow-y:hidden;
+    overflow-y: hidden;
 }
 
 .mainTitleHref h2 {
@@ -607,4 +609,14 @@ li.buttonLi {
 
 .imgWitha{
   padding: 8px
+}
+
+a.retweet {
+    border: 1px solid #3aabfc;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    background: #3aabfc;
+    font-size: 12px;
+    margin-left: 10px;
 }
