@@ -5,7 +5,7 @@ const answerSchema = new Schema({
   _idQuestion: Schema.Types.ObjectId,
   content: String,
   attachments: [String],
-  _authorId: { type:Schema.Types.ObjectId,, ref:'User' }
+  _authorId: { type:Schema.Types.ObjectId, ref:'User' }
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });

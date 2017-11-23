@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.all.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/dist/materialize/css/materialize.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script type="text/javascript" src="/dist/jquery/jquery.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="/dist/axios/axios.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="/javascripts/main.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/dist/materialize/js/materialize.js" charset="utf-8"></script>
   <% if(typeof(medium) != 'undefined') {%>
   <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="/dist/medium-editor/css/medium-editor.min.css">
@@ -48,5 +51,31 @@
 
     </script>
   <% } %>
+  <script>
+  $('#deleteStory').submit(function (e, params) {
+  var localParams = params || {};
+
+  if (!localParams.send) {
+      e.preventDefault();
+  }
+  swal({
+             title: "Confirm Entry",
+             text: "Are you sure all entries are correct",
+             type: "warning",
+             showCancelButton: true,
+             confirmButtonColor: "#6A9944",
+             confirmButtonText: "Confirm",
+             cancelButtonText: "Cancel"
+         }, function (isConfirm) {
+             if (isConfirm) {
+                 $(e.currentTarget).trigger(e.type, { 'send': true });
+             } else {
+
+           //additional run on cancel  functions can be done hear
+
+         }
+     });
+});
+  </script>
 </body>
 </html>

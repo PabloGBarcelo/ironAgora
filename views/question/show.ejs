@@ -1,17 +1,62 @@
 <div class="navbar">
   <a href="/forum"><img src="/images/logo.png"></a>
-  <form action="/forum/<%=results._id%>/edit" method="get">
+  <form class="inline-block" action="/forum/<%=results.id%>/edit" method="get">
     <div class="newStoryNav">
       <% if (user._id === results._authorId) { %>
-        <button>Edit</button>
+        <button class="publish">Edit</button> or
       <% } %>
       <a href="/forum/">Go to main</a>
     </div>
   </form>
 </div>
+<div class="secondBar">
+    <div class="authorMain">
+      <div class="authorAvatar inline-block">
+        <img class="avatar" src="<%=results._authorId.avatar%>">
+      </div>
+      <div class="textAuthor inline-block">
+        <span class="author"><%=results._authorId.name%></span>
+        <% if (results.tags!="") {%>
+            <span><%=results.tags%></span>
+        <%}%>
+      </div>
+      <div class="inline-block">
+        <form class="inline-block" action="/forum/<%=results.id%>/remove" method="post" id="deleteStory">
+          <button class="publish red whitecolor"> Delete article</button>
+        </form>
+      </div>
+    </div>
+
+</div>
 <div class="editable2">
-  <%-title%>
+  <%-results.title%>
 </div>
 <div class="editable">
   <%-results.content%>
 </div>
+<<<<<<< HEAD
+=======
+</form>
+
+<form action="/forum/<%=results.id%>/newAnswer" method="post">
+  <div class="answerInPost">
+    <textarea placeholder="Write a response..." name="answer" class="newAnswer"></textarea>
+    <button class="waves-effect waves-light btn sendAnswer"><i class="material-icons left"></i>Send</button></a>
+  </div>
+</form>
+
+  <% resultAnswer.forEach(e => { %>
+    <div class="commentadded">
+      <img class ="miniavatar" src="<%=e._authorId.avatar%>">
+      <span class="commentName"><%=e._authorId.name%></span>
+      <% if(e.content != "- message deleted by user -"){ %>
+      <form class="inline-block" action="/forum/<%=e.id%>/removeAnswer?fromStory=<%=results.id%>" method="post">
+        <button class="removeMyAnswer"><i class="fa fa-trash-o" aria-hidden="true">
+        </i></button></form>
+      <%}%>
+    <p><%= e.content %></p>
+  </div>
+  <% }) %>
+
+  // Answers here
+>>>>>>> 7d99b1c46cc2c2026d599e5d3e913b222efad8b6

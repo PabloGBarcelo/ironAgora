@@ -16,6 +16,7 @@ const authSlack = require('./routes/authSlack');
 const forumRoutes = require('./routes/forum');
 const questionRoutes = require('./routes/question');
 const userRoutes = require('./routes/user');
+const answerRoutes = require('./routes/answer');
 
 const app = express();
 
@@ -64,6 +65,7 @@ app.use('/dist/blueimp-file-upload', express.static(path.join(__dirname, 'node_m
 app.use('/dist/medium-editor-insert-plugin', express.static(path.join(__dirname, 'node_modules/medium-editor-insert-plugin')));
 app.use('/dist/medium-editor', express.static(path.join(__dirname, 'node_modules/medium-editor/dist')));
 app.use('/dist/jquery-sortable', express.static(path.join(__dirname, 'node_modules/jquery-sortable/source/js')));
+app.use('/dist/materialize', express.static(path.join(__dirname, 'node_modules/materialize-css/dist')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -73,6 +75,7 @@ app.use('/auth', authGithub);
 app.use('/auth', authSlack);
 app.use('/forum', forumRoutes);
 app.use('/forum', questionRoutes);
+app.use('/forum', answerRoutes);
 app.use('/user', userRoutes);
 
 // catch 404 and forward to error handler

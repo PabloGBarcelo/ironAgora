@@ -12,6 +12,8 @@ a {
       width: 80%;
       margin: 0 auto;
       border-bottom: 1px solid black;
+      margin-bottom: 5px;
+      margin-top: 7px;
   }
 
   .navbar > p {
@@ -59,6 +61,9 @@ a {
       margin: 0 auto;
       border-radius: 5px;
       padding: 7px;
+      background: white;
+      line-height: 21px;
+      z-index: 0;
   }
 
   .btn-medium > a{
@@ -67,6 +72,10 @@ a {
     text-decoration: none;
     font-weight: 100;
     font-size: 14px;
+  }
+
+  .btn-slack a {
+      color: grey;
   }
 
   i.fa.fa-slack{
@@ -125,14 +134,15 @@ a {
   }
 
   .newStoryNav {
-    top: 41px;
-    position: absolute;
-    right: 150px;
-}
+      top: 14px;
+      position: absolute;
+      right: 185px;
+  }
 
 .editable, .editable2 {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 .photoForum {
@@ -328,4 +338,216 @@ div.editable2 img {
 
 .flex-inner li {
   width: 100px;
+}
+
+.tagsShow {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 7px;
+    text-align: right;
+}
+
+.tagsMain {
+    margin-top: 13px;
+    border: 1px solid #CCC;
+    padding: 3px;
+    color: #a6a6a6;
+     overflow-y:hidden;
+}
+
+.mainTitleHref h2 {
+  font-size: 21px;
+  font-family: sans-serif;
+  font-weight: 100;
+  margin: 0;
+  margin-top: 17px;
+}
+
+i.fa.fa-sign-out{
+    color: gray;
+    font-size: 20px;
+}
+
+i.fa.fa-pencil {
+    color: gray;
+    font-size: 20px;
+}
+i.fa.fa-user {
+    color: gray;
+    font-size: 20px;
+}
+
+.fixed-action-btn.horizontal ul{
+  right: 50px;
+  top: -10px;
+   -webkit-transform: none;
+ transform: none;
+  }
+
+  .smaller {
+    width: 33px;
+    height: 33px;
+}
+
+i.fa.fa-bars{
+  color: black;
+}
+
+.btn-float-top {
+    line-height: 32px !important;
+}
+.editable2 h2 {
+    margin: 0;
+}
+
+div.tagsinput input {
+    width: 80px;
+    /* margin: 0 5px 5px 0; */
+    font-family: helvetica;
+    font-size: 13px;
+    border: 1px solid transparent;
+    padding: 5px;
+    background: 0 0;
+    color: #000;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    height: 25px;
+}
+
+.answerInPost {
+    width: 50%;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.newAnswer {
+  resize: vertical;
+  min-height: 76px;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.newAnswer::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+.newAnswer:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+.newAnswer::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+  opacity: 1;
+}
+.newAnswer:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+.newAnswer::-ms-input-placeholder { /* Microsoft Edge */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+
+.newAnswer::placeholder { /* Most modern browsers support this now. */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+
+.sendAnswer {
+    background: #008377;
+    width: 115px;
+    font-size: 13px;
+}
+
+.commentadded {
+  margin: 0 auto;
+  width: 40%;
+  color: gray;
+  padding: 20px;
+  border: 1px solid #f6f6f6;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.miniavatar {
+    border-radius: 50%;
+    width: 40px;
+}
+
+.commentName {
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.removeMyAnswer {
+    margin-left: 20px;
+    color: red;
+    background: none;
+    border: none;
+}
+
+.publish {
+    background: none;
+    border: none;
+    color: #50bcb7;
+}
+
+.newStoryNav a {
+    margin-left: 10px;
+}
+
+div.tagsinput {
+    overflow-y: hidden !important;
+}
+
+.publish:hover {
+    background: #50bcb7;
+    border: none;
+    color: white;
+}
+
+.fixed-action-btn.horizontal ul {
+    height: 45%;
+    width: 197px;
+}
+
+.avatar {
+    width: 65px;
+    border-radius: 50%;
+    border: 0.6px solid #d5d5d5;
+    vertical-align: middle;
+}
+
+.secondBar {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.author {
+    font-weight: 100;
+    margin-left: 15px;
+}
+
+.whitecolor{
+  color: white;
 }
