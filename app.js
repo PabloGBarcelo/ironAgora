@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -21,9 +22,8 @@ const answerRoutes = require('./routes/answer');
 const app = express();
 
 // connection to mongodb
-const dbURL = 'mongodb://localhost/second-project';
-mongoose.connect(dbURL).then(() => {
-  console.log(dbURL);
+mongoose.connect(process.env.mongoDB).then(() => {
+  console.log(process.env.mongoDB);
 });
 
 // view engine setup

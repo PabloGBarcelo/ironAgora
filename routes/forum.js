@@ -12,10 +12,11 @@ router.get('/', ensureLoggedIn('/'), (req, res, next) => {
       let allTags = {};
       results.forEach(post => {
         post.tags[0].split(',').forEach(tag => {
-          if (!allTags[tag] && tag !== '') {
-            allTags[tag] = 1;
-          } else if (tag !== '') {
-            allTags[tag]++;
+          let tagUp = tag.toUpperCase();
+          if (!allTags[tagUp] && tagUp !== '') {
+            allTags[tagUp] = 1;
+          } else if (tagUp !== '') {
+            allTags[tagUp]++;
           }
         });
       });
