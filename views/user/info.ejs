@@ -1,19 +1,20 @@
 <div class="navbar">
-  <img src="/images/logo.png">
-</div>
-<div class="authorMainProfile">
-  <div class="authorAvatar avatarProfile inline-block">
-    <img class="avatar" src="<%=user.avatar%>">
-  </div>
-  <div class="textAuthorProfile inline-block">
-    <span class="author"><%=user.name%></span>
-          <% if (session._id.equals(user._id)) { %>
-    <div class="editProfile">
-      <a href="/user/edit/<%= user._id %>">Edit my profile</a>
+  <div class="authorMainProfile">
+    <div class="authorAvatar avatarProfile inline-block">
+      <img class="avatar" src="<%=user.avatar%>">
     </div>
-    <% } %>
+    <div class="textAuthorProfile inline-block">
+      <span class="author"><%=user.name%></span>
+            <% if (session._id.equals(user._id)) { %>
+      <div class="editProfile">
+        <a href="/user/edit/<%= user._id %>">Edit my profile</a>
+      </div>
+      <% } %>
+    </div>
   </div>
+  <a href="/"><img class="imgWitha" src="/images/logo.png"></a>
 </div>
+
 <div class="allUserPosts">
   <% questions.forEach(question => { %>
     <div class="onePost">

@@ -22,7 +22,6 @@ a {
   }
 
   .navbar > img {
-    width: 153px;
     padding: 8px;
   }
 
@@ -568,12 +567,13 @@ li.buttonLi {
 }
 
 .authorMainProfile {
-    width: 25%;
+    width: 20%;
     margin: 0 auto;
-    border: 1px solid #d1caca;
     border-radius: 6px;
-    padding: 10px;
+    padding: 0px;
     text-align: left;
+    position: absolute;
+    top: 15px;
 }
 
 .editProfile {
@@ -594,4 +594,17 @@ li.buttonLi {
 
 .lihome{
   display: inline;
+}
+
+.authorAvatar img {
+    width: 37px;
+    margin-left: 15px;
+}
+
+.editProfile a {
+    font-size: 11px;
+}
+
+.imgWitha{
+  padding: 8px
 }
