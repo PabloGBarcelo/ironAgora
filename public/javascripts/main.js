@@ -18,7 +18,6 @@ var checkNewContent = function() {
       success: response => {
         console.log(response['results'].length);
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
-        // console.log(numCurrentQuest, parsedResponse);
         console.log(numCurrentQuest,response['results'].length);
         let diffQuestions = response['results'].length - numCurrentQuest;
         if (diffQuestions> 0) {
