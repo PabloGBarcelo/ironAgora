@@ -51,9 +51,13 @@ router.post('/edit/:id', [ensureLoggedIn('/'), upload.single('avatar')], (req, r
 router.get('/:id', ensureLoggedIn('/'), (req, res, next) => {
   User.findOne({ '_id': req.params.id })
     .then(user => {
-      Question.find({_authorId: req.user.id},null, {sort: {created_at: -1}})
-              .then( questions => { res.render('user/info', { user:req.user, questions } );})
-              .catch((err) => console.log(err));
+      Question.find({_authorId: req.user.id}, null, {sort: {created_at: -1}})
+              .then(questions => {
+                res.render('user/info', { user: req.user, questions });
+              })
+              .catch(error => {
+                console.log(error);
+              });
     })
     .catch(error => {
       res.render('error', error);

@@ -4,7 +4,7 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const moment = require('moment');
 const Question = require('../models/Question');
 
-router.get('/', ensureLoggedIn('/'), (req, res, next) => {
+router.get('/', ensureLoggedOut('/'), (req, res, next) => {
   Question.find({}, null, {sort: {created_at: -1}}) // desc
           .populate('_authorId')
           .exec()
@@ -16,9 +16,11 @@ router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
   Question.find()
           .then(results => {
             let JSONdata = JSON.stringify({results});
-            // console.log(JSONdata);
-            res.send(JSONdata); })
-          .catch((err) => console.log(err));
+            res.send(JSONdata);
+          })
+          .catch(error => {
+            console.log(error);
+          });
 });
 
 module.exports = router;
