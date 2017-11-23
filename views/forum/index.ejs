@@ -16,17 +16,12 @@
 </div>
 <div class="tagsBar inline">
   <ul class="tagsNav">
-    <li>HOME</li>
-    <li>UX</li>
-    <li>UI</li>
-    <li>Cats</li>
-    <li>Technology</li>
-    <li>Creativity</li>
-    <li>Entrepreneurship</li>
-    <li>Self</li>
-    <li>Culture</li>
-    <li>Digital design</li>
-    <li>More</li>
+    <a href="/"><li class="lihome">HOME</li></a>
+    <% if(mainTags!= "") { %>
+    <% mainTags.forEach(e => { %>
+      <li class="lihome"><a href="/forum/tags/<%=e%>"><%=e%></a></li>
+    <%});%>
+      <% }%>
   </ul>
 </div>
 <div class="allPosts">
