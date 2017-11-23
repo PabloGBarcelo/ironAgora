@@ -25,13 +25,18 @@ router.get('/', ensureLoggedIn('/'), (req, res, next) => {
       mainTags.sort((keyOne, keyTwo) => {
         return allTags[keyTwo] - allTags[keyOne];
       }).splice(8);
-      console.log(mainTags);
 
       res.render('forum/index', {results, mainTags, moment});
     })
     .catch(error => {
-      console.log(error)
+      console.log('Error ocurred while fetching posts');
     });
+});
+
+router.get('/tag/:id', (req, res, next) => {
+  Question.find({ tags: { "$regex": req.params.id, "$options": "i" } }, (error, results) => {
+    res.render('forum/index', {results, mainTags: [], moment})
+  });
 });
 
 router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
@@ -41,7 +46,7 @@ router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
       res.send(JSONdata);
     })
     .catch(error => {
-      console.log(error);
+      console.log('Error ocurred while fetching data');
     });
 });
 
