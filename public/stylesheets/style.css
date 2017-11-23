@@ -192,28 +192,23 @@ a {
    align-content: flex-end;
 }
 
-.allUserPosts{
-  /* On the flex container */
-  margin: 0 auto;
-  width: 80%;
-     display: -webkit-flex;
-     display: flex;
-     -webkit-align-items: center;
-     align-items: center;
-     -webkit-justify-content: center;
-     justify-content: center;
-     /* You can set flex-wrap and flex-direction individually */
-     -webkit-flex-direction: column;
-     flex-direction: column;
-     -webkit-flex-wrap: wrap;
-     flex-wrap: wrap;
-     /* Or do it all in one line with flex flow */
-     -webkit-flex-flow: column wrap;
-     flex-flow: column wrap;
-     /* tweak the where items line up on the row */
-     /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
-     -webkit-align-content: flex-end;
-     align-content: flex-end;
+.allUserPosts {
+    margin: 0 auto;
+    width: 80%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-content: flex-end;
+    align-content: flex-end;
 }
 
 .titleMin {
@@ -348,7 +343,7 @@ div.editable2 img {
 }
 
 .tagsMain {
-    margin-top: 13px;
+    margin-top: 28px;
     border: 1px solid #CCC;
     padding: 3px;
     color: #a6a6a6;
@@ -555,4 +550,19 @@ div.tagsinput {
 li.buttonLi {
     width: 100%;
     display: inline-block;
+}
+
+.new-fetch {
+    width: 70%;
+    background: #fcfcfc;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    padding: 6px;
+    border-radius: 2px;
+}
+
+.newPostAdded {
+    margin: 0 auto;
+    text-align: center;
 }

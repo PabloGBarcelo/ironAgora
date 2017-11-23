@@ -9,7 +9,7 @@ var checkNewContent = function() {
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
         let diffQuestions = numResponse - numCurrentQuest;
         if (diffQuestions > 0) {
-          let refreshButton = $('.new-fetch');
+          let refreshButton = $('.newPostAdded');
           if (refreshButton) {
             refreshButton.remove();
           }

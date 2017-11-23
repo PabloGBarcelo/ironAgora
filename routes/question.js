@@ -55,7 +55,8 @@ router.get('/:id/show', (req, res, next) => {
             .populate('_authorId')
             .exec()
             .then((resultAnswer =>{
-                res.render('question/show', {results,resultAnswer} );
+              console.log(results);
+                res.render('question/show', {user:req.user,results,resultAnswer} );
             }))
             .catch((err) => console.log(err));
           ;})
