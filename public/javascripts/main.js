@@ -23,14 +23,20 @@ var checkNewContent = function() {
   }, 3000);
 };
 
+function notify() {
+  alert( "clicked" );
+}
 
 $(document).ready(() => {
 
   checkNewContent();
 
-  $('.new-fetch').on('click', (event) => {
-    event.preventDefault();
-    window.location.reload(true);
-  });
+  $('.new-fetch').on('click', notify);
+
+  //$('.new-fetch').on('click', (event) => {
+  //  console.log('Boton pulsado');
+  //  event.preventDefault();
+  //  window.location.reload(true);
+  //});
 
 });

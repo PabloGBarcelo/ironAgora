@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const multer = require('multer');
-const upload = multer({ dest: './uploads/user' });
+const upload = multer({ dest: './public/uploads/' });
 const User = require('../models/User');
 const Question = require('../models/Question');
 
@@ -36,8 +36,10 @@ router.post('/edit/:id', [ensureLoggedIn('/'), upload.single('avatar')], (req, r
     username: req.body.username,
     name: req.body.name,
     email: req.body.email,
-    avatar: `/uploads/user/${req.file.filename}`
   };
+  if (req.file) {
+    userInfo.avatar = `/uploads/${req.file.filename}`;
+  }
 
   User.findByIdAndUpdate(req.user._id, userInfo)
     .then(user => {
