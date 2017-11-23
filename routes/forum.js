@@ -4,7 +4,7 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const moment = require('moment');
 const Question = require('../models/Question');
 
-router.get('/', ensureLoggedOut('/'), (req, res, next) => {
+router.get('/', ensureLoggedIn('/'), (req, res, next) => {
   Question.find({}, null, {sort: {created_at: -1}}) // desc
           .populate('_authorId')
           .exec()
