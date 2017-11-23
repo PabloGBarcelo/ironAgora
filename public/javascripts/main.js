@@ -19,9 +19,9 @@ var checkNewContent = function() {
       success: response => {
         let numResponse = response['results'].length;
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
-        let diffQuestions = numResponse - numCurrentQuest;
-        console.log(numResponse, numCurrentQuest);
-        if (diffQuestions > 0) {
+        console.log(numCurrentQuest,response['results'].length);
+        let diffQuestions = response['results'].length - numCurrentQuest;
+        if (diffQuestions> 0) {
           $('.allPosts:first').before(`<button class="new-fetch" type="submit">+${diffQuestions} new posts</button>`);
         }
       },
