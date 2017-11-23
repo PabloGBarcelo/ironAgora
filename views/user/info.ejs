@@ -2,9 +2,9 @@
   <img src="/images/logo.png">
 </div>
 <div>
-  <p>User: <%= name %></p>
-  <img src="<%= avatar %>" alt="user avatar">
-  <a href="/user/edit/<%= user._id %>"><%= name %></a>
+  <p>User: <%= user.name %></p>
+  <img src="<%= user.avatar %>" alt="user avatar">
+  <a href="/user/edit/<%= user._id %>"><%= user.name %></a>
 </div>
 <div class="allUserPosts">
   <% questions.forEach(question => { %>

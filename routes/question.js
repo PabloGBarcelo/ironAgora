@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
 
-router.get('/new', ensureLoggedIn('/'), (req, res, next) => {
+router.get('/new', (req, res, next) => {
   console.log(req.user);
   res.render('question/new', { medium: 1});
 });
 
-router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
+router.post('/new', (req, res, next) => {
 
   let mainPhoto = req.body.myPost.split(/img src="/)[1].split(/"/)[0];
   let newQuestion = new Question ({
@@ -28,19 +27,13 @@ router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
   });
 });
 
-router.get('/:id/show', ensureLoggedIn('/'), (req, res, next) => {
-  Question.findById(req.params.id)
-          .then((results) => res.render('question/show',  { results, user: req.user } ))
-          .catch((err) => console.log(err));
-});
-
-router.get('/:id/edit', ensureLoggedIn('/'), (req, res, next) => {
+router.get('/:id/edit', (req, res, next) => {
   Question.findById(req.params.id)
           .then((results) => res.render('question/edit', { medium: 1, results}))
           .catch((err) => console.log(err));
 });
 
-router.post('/:id/edit', ensureLoggedIn('/'), (req, res, next) => {
+router.post('/:id/edit', (req, res, next) => {
   let mainPhoto = req.body.myPost.split(/img src="/)[1].split(/"/)[0];
   let editPost = {
     title: req.body.myTitle,
