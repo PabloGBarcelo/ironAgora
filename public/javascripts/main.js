@@ -9,11 +9,11 @@ var checkNewContent = function() {
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
         let diffQuestions = numResponse - numCurrentQuest;
         if (diffQuestions > 0) {
-          let refreshButton = $('.new-fetch');
+          let refreshButton = $('.newPostAdded');
           if (refreshButton) {
             refreshButton.remove();
           }
-          $('.allPosts:first').before(`<button class="new-fetch" type="submit">+${diffQuestions} new posts</button>`);
+          $('.allPosts:first').before(`<div class="newPostAdded"><button class="new-fetch" type="submit">+${diffQuestions} new posts</button></div>`);
         }
       },
       error: error => {

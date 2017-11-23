@@ -2,7 +2,7 @@
   <a href="/forum"><img src="/images/logo.png"></a>
   <form class="inline-block" action="/forum/<%=results.id%>/edit" method="get">
     <div class="newStoryNav">
-      <% if (user._id === results._authorId) { %>
+      <% if (user._id === results._authorId.id) { %>
         <button class="publish">Edit</button> or
       <% } %>
       <a href="/forum/">Go to main</a>
@@ -47,7 +47,7 @@
     <div class="commentadded">
       <img class ="miniavatar" src="<%=e._authorId.avatar%>">
       <span class="commentName"><%=e._authorId.name%></span>
-      <% if(e.content != "- message deleted by user -"){ %>
+      <% if(e.content != "- message deleted by user -" && e._authorId.id == user.id){ %>
       <form class="inline-block" action="/forum/<%=e.id%>/removeAnswer?fromStory=<%=results.id%>" method="post">
         <button class="removeMyAnswer"><i class="fa fa-trash-o" aria-hidden="true">
         </i></button></form>
