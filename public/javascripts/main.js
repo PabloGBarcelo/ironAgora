@@ -13,15 +13,15 @@ var checkNewContent = function() {
     //  });
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:3000/forum/check',
+      url: 'check',
       dataType: 'json',
       success: response => {
-        let parsedResponse = JSON.parse(response);
+        console.log(response['results'].length);
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
         // console.log(numCurrentQuest, parsedResponse);
-        console.log(numCurrentQuest);
-        console.log(parsedResponse);
-        if (numCurrentQuest - response > 0) {
+        console.log(numCurrentQuest,response['results'].length);
+        let diffQuestions = response['results'].length - numCurrentQuest;
+        if (diffQuestions> 0) {
           $('.allPosts:first').before(`<button class="new-fetch" type="submit">+${diffQuestions} new posts</button>`);
         }
       },
