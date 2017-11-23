@@ -13,6 +13,7 @@ a {
       margin: 0 auto;
       border-bottom: 1px solid black;
       margin-bottom: 5px;
+      margin-top: 7px;
   }
 
   .navbar > p {
@@ -62,6 +63,7 @@ a {
       padding: 7px;
       background: white;
       line-height: 21px;
+      z-index: 0;
   }
 
   .btn-medium > a{
@@ -132,13 +134,13 @@ a {
   }
 
   .newStoryNav {
-    top: 9px;
-    position: absolute;
-    right: 150px;
-}
+      top: 14px;
+      position: absolute;
+      right: 185px;
+  }
 
 .editable, .editable2 {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     margin-top: 10px;
 }
@@ -427,6 +429,7 @@ div.tagsinput input {
   font-size: 16px;
   border: 1px solid #e0e0e0;
   border-radius: 3px;
+  padding: 10px;
 }
 
 .newAnswer::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -499,4 +502,52 @@ div.tagsinput input {
     color: red;
     background: none;
     border: none;
+}
+
+.publish {
+    background: none;
+    border: none;
+    color: #50bcb7;
+}
+
+.newStoryNav a {
+    margin-left: 10px;
+}
+
+div.tagsinput {
+    overflow-y: hidden !important;
+}
+
+.publish:hover {
+    background: #50bcb7;
+    border: none;
+    color: white;
+}
+
+.fixed-action-btn.horizontal ul {
+    height: 45%;
+    width: 197px;
+}
+
+.avatar {
+    width: 65px;
+    border-radius: 50%;
+    border: 0.6px solid #d5d5d5;
+    vertical-align: middle;
+}
+
+.secondBar {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.author {
+    font-weight: 100;
+    margin-left: 15px;
+}
+
+.whitecolor{
+  color: white;
 }

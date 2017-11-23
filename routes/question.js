@@ -48,8 +48,10 @@ router.post('/:id/edit', (req, res, next) => {
 
 router.get('/:id/show', (req, res, next) => {
   Question.findById(req.params.id)
+          .populate('_authorId')
+          .exec()
           .then((results) => {
-            Answer.find({_idQuestion: req.params.id })
+            Answer.find({_idQuestion: req.params.id },null, {sort: {created_at: -1}})
             .populate('_authorId')
             .exec()
             .then((resultAnswer =>{

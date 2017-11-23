@@ -1,19 +1,29 @@
 <div class="navbar">
   <a href="/forum"><img src="/images/logo.png"></a>
-  <form action="/forum/<%=results.id%>/remove" method="post" id="deleteStory">
-    <button> Delete </button>
-  </form>
-  <form action="/forum/<%=results.id%>/edit" method="get">
+  <form class="inline-block" action="/forum/<%=results.id%>/edit" method="get">
     <div class="newStoryNav">
-      <button>Edit</button>
-      <a href="/forum/">Go to main</a>
+      <button class="publish">Edit</button> or <a href="/forum/">Go to main</a>
     </div>
 </div>
-<% if (results.tags!="") {%>
-<div class="tagsShow">
-  Tags: <%=results.tags%>
+<div class="secondBar">
+    <div class="authorMain">
+      <div class="authorAvatar inline-block">
+        <img class="avatar" src="<%=results._authorId.avatar%>">
+      </div>
+      <div class="textAuthor inline-block">
+        <span class="author"><%=results._authorId.name%></span>
+        <% if (results.tags!="") {%>
+            <span><%=results.tags%></span>
+        <%}%>
+      </div>
+      <div class="inline-block">
+        <form class="inline-block" action="/forum/<%=results.id%>/remove" method="post" id="deleteStory">
+          <button class="publish red whitecolor"> Delete article</button>
+        </form>
+      </div>
+    </div>
+
 </div>
-<%}%>
 <div class="editable2">
   <%-results.title%>
 </div>
@@ -33,7 +43,7 @@
     <div class="commentadded">
       <img class ="miniavatar" src="<%=e._authorId.avatar%>">
       <span class="commentName"><%=e._authorId.name%></span>
-      <% if(e.comment != "- message deleted by user -"){ %>
+      <% if(e.content != "- message deleted by user -"){ %>
       <form class="inline-block" action="/forum/<%=e.id%>/removeAnswer?fromStory=<%=results.id%>" method="post">
         <button class="removeMyAnswer"><i class="fa fa-trash-o" aria-hidden="true">
         </i></button></form>
