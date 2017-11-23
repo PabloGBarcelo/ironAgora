@@ -551,3 +551,8 @@ div.tagsinput {
 .whitecolor{
   color: white;
 }
+
+li.buttonLi {
+    width: 100%;
+    display: inline-block;
+}

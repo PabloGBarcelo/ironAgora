@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,69 +14,66 @@
   <script type="text/javascript" src="/javascripts/main.js" charset="utf-8"></script>
   <script type="text/javascript" src="/dist/materialize/js/materialize.js" charset="utf-8"></script>
   <% if(typeof(medium) != 'undefined') {%>
-  <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
-  <link rel="stylesheet" href="/dist/medium-editor/css/medium-editor.min.css">
-  <link rel="stylesheet" href="/dist/medium-editor/css/themes/default.css">
-  <link rel="stylesheet" href="/dist/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css">
-  <link rel="stylesheet" href="/stylesheets/jquery.tagsinput.min.css">
-  <% } %>
-  <title>IronAgora</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/dist/medium-editor/css/medium-editor.min.css">
+    <link rel="stylesheet" href="/dist/medium-editor/css/themes/default.css">
+    <link rel="stylesheet" href="/dist/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css">
+    <link rel="stylesheet" href="/stylesheets/jquery.tagsinput.min.css">
+    <% } %>
+      <title>IronAgora</title>
+</head>
+
+<body>
   <%- body %>
-  <% if(typeof(medium) != 'undefined') {%>
-  <script type="text/javascript" src="/javascripts/jquery.tagsinput.min.js"></script>
-  <script type="text/javascript" src="/dist/medium-editor/js/medium-editor.js"></script>
-  <script type="text/javascript" src="/dist/handlebars/handlebars.runtime.min.js"></script>
-  <script type="text/javascript" src="/dist/blueimp-file-upload/vendor/jquery.ui.widget.js"></script>
-  <script type="text/javascript" src="/dist/blueimp-file-upload/jquery.fileupload.js"></script>
-  <script type="text/javascript" src="/dist/blueimp-file-upload/jquery.iframe-transport.js"></script>
-  <script type="text/javascript" src="/dist/medium-editor-insert-plugin/dist/js/medium-editor-insert-plugin.min.js"></script>
-  <script type="text/javascript" src="/dist/jquery-sortable/jquery-sortable-min.js"></script>
-  <script>
+    <% if(typeof(medium) != 'undefined') {%>
+      <script type="text/javascript" src="/javascripts/jquery.tagsinput.min.js"></script>
+      <script type="text/javascript" src="/dist/medium-editor/js/medium-editor.js"></script>
+      <script type="text/javascript" src="/dist/handlebars/handlebars.runtime.min.js"></script>
+      <script type="text/javascript" src="/dist/blueimp-file-upload/vendor/jquery.ui.widget.js"></script>
+      <script type="text/javascript" src="/dist/blueimp-file-upload/jquery.fileupload.js"></script>
+      <script type="text/javascript" src="/dist/blueimp-file-upload/jquery.iframe-transport.js"></script>
+      <script type="text/javascript" src="/dist/medium-editor-insert-plugin/dist/js/medium-editor-insert-plugin.min.js"></script>
+      <script type="text/javascript" src="/dist/jquery-sortable/jquery-sortable-min.js"></script>
+      <script>
         $('#tags').tagsInput();
         var editor = new MediumEditor('.editable');
         var editor = new MediumEditor('.editable2');
-        $(function () {
-            $('.editable').mediumInsert({
-                editor: editor,
-                addons: {
-                    images: {
-                        fileUploadOptions: {
-                            url: 'upload.php'
-                        }
-                    }
+        $(function() {
+          $('.editable').mediumInsert({
+            editor: editor,
+            addons: {
+              images: {
+                fileUploadOptions: {
+                  url: 'upload.php'
                 }
-            });
+              }
+            }
+          });
         });
+      </script>
+      <% } %>
+        <script>
+          $('#deleteStory').submit(function(e, params) {
+            var localParams = params || {};
 
-    </script>
-  <% } %>
-  <script>
-  $('#deleteStory').submit(function (e, params) {
-  var localParams = params || {};
-
-  if (!localParams.send) {
-      e.preventDefault();
-  }
-  swal({
-             title: "Confirm Entry",
-             text: "Are you sure all entries are correct",
-             type: "warning",
-             showCancelButton: true,
-             confirmButtonColor: "#6A9944",
-             confirmButtonText: "Confirm",
-             cancelButtonText: "Cancel"
-         }, function (isConfirm) {
-             if (isConfirm) {
-                 $(e.currentTarget).trigger(e.type, { 'send': true });
-             } else {
-
-           //additional run on cancel  functions can be done hear
-
-         }
-     });
-});
-  </script>
+            if (!localParams.send) {
+              e.preventDefault();
+            }
+            swal({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then(function(result) {
+              if (result.value) {
+                $("#deleteStory").off("submit").submit();
+              }
+            })
+          });
+        </script>
 </body>
+
 </html>
