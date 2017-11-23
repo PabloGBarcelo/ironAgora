@@ -1,4 +1,3 @@
-
 var checkNewContent = function() {
   setInterval(() => {
     $.ajax({

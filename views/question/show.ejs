@@ -26,6 +26,11 @@
         </form>
       </div>
       <%}%>
+      <a class="retweet" href="http://kanishkkunal.in"
+        target="popup"
+        onclick="window.open('https://twitter.com/intent/tweet?text=<%=results.title.replace(/<(?:.|\n)*?>/gm, '');%> @ironAgora','popup','width=600,height=300'); return false;">
+          Retweet
+      </a>
     </div>
 
 </div>

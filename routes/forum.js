@@ -3,7 +3,6 @@ const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const moment = require('moment');
 const Question = require('../models/Question');
-const Push = require('push.js');
 const mainTagsSearch = require('../utils/mainTagsSearch');
 
 router.get('/', ensureLoggedIn('/'), (req, res, next) => {
@@ -40,8 +39,6 @@ router.get('/tags/:id', (req, res, next) => {
 router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
   Question.find()
     .then(results => {
-      const push = new Push();
-      push.create('Hello World!');
       let JSONdata = JSON.stringify({results});
       res.send(JSONdata);
     })
