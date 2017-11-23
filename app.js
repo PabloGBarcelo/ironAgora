@@ -18,6 +18,7 @@ const forumRoutes = require('./routes/forum');
 const questionRoutes = require('./routes/question');
 const userRoutes = require('./routes/user');
 const answerRoutes = require('./routes/answer');
+const clapRoutes = require('./routes/clap');
 
 const app = express();
 
@@ -77,6 +78,7 @@ app.use('/forum', forumRoutes);
 app.use('/forum', questionRoutes);
 app.use('/forum', answerRoutes);
 app.use('/user', userRoutes);
+app.use('/clap', clapRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

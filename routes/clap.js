@@ -1,17 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
-
 const Clap = require('../models/Clap');
 
-router.get('/:id', (req, res, next) => {
+router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
+  let backURL = req.header('Referer') || '/';
+  console.log(backURL);
 
-  const clapInfo = {
+  const newClap = new Clap({
+    _idQuestion: req.params.id,
+    _authorId: req.user.id,
+  });
 
-  }
-  
-  let questionId = req.params.id;
-  let userId = req.user.id;
-  Clap.save
-
+  newClap.save(error => {
+    if (error) { return next(error); }
+    res.redirect(backURL);
+  });
 });
+
+module.exports = router;
