@@ -13,7 +13,7 @@ var checkNewContent = function() {
           if (refreshButton) {
             refreshButton.remove();
           }
-          $('.allPosts:first').before(`<button class="new-fetch" type="submit">+${diffQuestions} new posts</button>`);
+          $('.allPosts:first').before(`<div class="newPostAdded"><button class="new-fetch" type="submit">+${diffQuestions} new posts</button></div>`);
           $('.new-fetch').on('click', (event) => {
             event.preventDefault();
             window.location.reload(true);

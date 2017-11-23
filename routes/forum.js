@@ -24,12 +24,10 @@ router.get('/', ensureLoggedIn('/'), (req, res, next) => {
       mainTags.sort((keyOne, keyTwo) => {
         return allTags[keyTwo] - allTags[keyOne];
       }).splice(8);
-      console.log(mainTags);
-
       res.render('forum/index', {results, mainTags, moment});
     })
     .catch(error => {
-      console.log(error)
+      console.log(error);
     });
 });
 
