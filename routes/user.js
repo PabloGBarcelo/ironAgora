@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-//const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const multer = require('multer');
 const upload = multer({ dest: './uploads/user' });
 const User = require('../models/User');
 const Question = require('../models/Question');
 
 
-router.get('/list', (req, res, next) => {
+router.get('/list', ensureLoggedIn('/'), (req, res, next) => {
   User.find({ forum: req.user.forum })
     .then(users => {
       res.render('user/list', {users});
@@ -17,7 +17,7 @@ router.get('/list', (req, res, next) => {
     });
 });
 
-router.get('/question', (req, res, next) => {
+router.get('/question', ensureLoggedIn('/'), (req, res, next) => {
   Question.find({ '_authorId': req.user._id }, { sort: { 'created_at': -1 }})
     .then(questions => {
       res.render('user/info', { user: req.user, questions });
@@ -27,11 +27,11 @@ router.get('/question', (req, res, next) => {
     });
 });
 
-router.get('/edit/:id', (req, res, next) => {
+router.get('/edit/:id', ensureLoggedIn('/'), (req, res, next) => {
   res.render('user/edit', req.user);
 });
 
-router.post('/edit/:id', upload.single('avatar'), (req, res, next) => {
+router.post('/edit/:id', [ensureLoggedIn('/'), upload.single('avatar')], (req, res, next) => {
   let userInfo = {
     username: req.body.username,
     name: req.body.name,
@@ -48,7 +48,7 @@ router.post('/edit/:id', upload.single('avatar'), (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', ensureLoggedIn('/'), (req, res, next) => {
   User.findOne({ '_id': req.params.id })
     .then(user => {
       res.render('user/info', req.user);

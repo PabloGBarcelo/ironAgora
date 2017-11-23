@@ -1,15 +1,17 @@
 <div class="navbar">
   <a href="/forum"><img src="/images/logo.png"></a>
-  <form action="/forum/<%=id%>/edit" method="get">
+  <form action="/forum/<%=results._id%>/edit" method="get">
     <div class="newStoryNav">
-      <button>Edit</button>
+      <% if (user._id === results._authorId) { %>
+        <button>Edit</button>
+      <% } %>
       <a href="/forum/">Go to main</a>
     </div>
+  </form>
 </div>
 <div class="editable2">
   <%-title%>
 </div>
 <div class="editable">
-  <%-content%>
+  <%-results.content%>
 </div>
-</form>
