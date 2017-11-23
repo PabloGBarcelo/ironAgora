@@ -3,6 +3,7 @@ const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const moment = require('moment');
 const Question = require('../models/Question');
+const Push = require('push.js');
 
 router.get('/', ensureLoggedIn('/'), (req, res, next) => {
   Question.find({}, null, { sort: { created_at: -1 }}) // desc
@@ -35,6 +36,8 @@ router.get('/', ensureLoggedIn('/'), (req, res, next) => {
 router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
   Question.find()
     .then(results => {
+      const push = new Push();
+      push.create('Hello World!');
       let JSONdata = JSON.stringify({results});
       res.send(JSONdata);
     })
