@@ -14,14 +14,14 @@ var checkNewContent = function() {
     $.ajax({
       method: 'GET',
       url: 'http://localhost:3000/forum/check',
+      cache: false,
       dataType: 'json',
       success: response => {
-        let parsedResponse = JSON.parse(response);
+        let numResponse = response['results'].length;
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
-        // console.log(numCurrentQuest, parsedResponse);
-        console.log(numCurrentQuest);
-        console.log(parsedResponse);
-        if (numCurrentQuest - response > 0) {
+        let diffQuestions = numResponse - numCurrentQuest;
+        console.log(numResponse, numCurrentQuest);
+        if (diffQuestions > 0) {
           $('.allPosts:first').before(`<button class="new-fetch" type="submit">+${diffQuestions} new posts</button>`);
         }
       },

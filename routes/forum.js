@@ -16,9 +16,11 @@ router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
   Question.find()
           .then(results => {
             let JSONdata = JSON.stringify({results});
-            // console.log(JSONdata);
-            res.send(JSONdata); })
-          .catch((err) => console.log(err));
+            res.send(JSONdata);
+          })
+          .catch(error => {
+            console.log(error);
+          });
 });
 
 module.exports = router;
