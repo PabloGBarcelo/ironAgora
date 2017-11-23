@@ -3,7 +3,7 @@ const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
 /* GET home page. */
-router.get('/', ensureLoggedIn('/forum'), (req, res, next) => {
+router.get('/', ensureLoggedOut('/forum'), (req, res, next) => {
   res.render('index');
 });
 
