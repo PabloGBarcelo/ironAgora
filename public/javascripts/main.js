@@ -32,6 +32,7 @@ var checkNewContent = function() {
   }, 3000);
 };
 
+
 $(document).ready(() => {
 
   checkNewContent();
