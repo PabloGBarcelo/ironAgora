@@ -9,8 +9,12 @@ router.get('/new', (req, res, next) => {
 });
 
 router.post('/new', (req, res, next) => {
-
-  let mainPhoto = req.body.myPost.split(/img src="/)[1].split(/"/)[0];
+  let mainPhoto;
+  if (req.body.myPost.includes("img src=")){
+    mainPhoto = req.body.myPost.split(/img src="/)[1].split(/"/)[0];
+  } else {
+    mainPhoto = "/images/nophoto.png";
+  }
   let newQuestion = new Question ({
     title: req.body.myTitle,
     content: req.body.myPost,
@@ -34,7 +38,12 @@ router.get('/:id/edit', (req, res, next) => {
 });
 
 router.post('/:id/edit', (req, res, next) => {
-  let mainPhoto = req.body.myPost.split(/img src="/)[1].split(/"/)[0];
+  let mainPhoto;
+  if (req.body.myPost.includes("img src=")){
+    mainPhoto = req.body.myPost.split(/img src="/)[1].split(/"/)[0];
+  } else {
+    mainPhoto = "/images/nophoto.png";
+  }
   let editPost = {
     title: req.body.myTitle,
     content: req.body.myPost,
