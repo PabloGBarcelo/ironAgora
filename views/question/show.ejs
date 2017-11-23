@@ -2,7 +2,7 @@
   <a href="/forum"><img src="/images/logo.png"></a>
   <form class="inline-block" action="/forum/<%=results.id%>/edit" method="get">
     <div class="newStoryNav">
-      <% if (user._id === results._authorId.id) { %>
+      <% if (user._id.equals(results._authorId._id)) { %>
         <button class="publish">Edit</button> or
       <% } %>
       <a href="/forum/">Go to main</a>
@@ -19,12 +19,13 @@
         <% if (results.tags!="") {%>
             <span><%=results.tags%></span>
         <%}%>
-      </div>
+      </div>  <% if (user._id.equals(results._authorId._id)) { %>
       <div class="inline-block">
         <form class="inline-block" action="/forum/<%=results.id%>/delete" method="post" id="deleteStory">
           <button class="publish red whitecolor"> Delete article</button>
         </form>
       </div>
+      <%}%>
     </div>
 
 </div>

@@ -55,7 +55,7 @@ router.get('/:id', ensureLoggedIn('/'), (req, res, next) => {
     .then(user => {
       Question.find({_authorId: user.id}, null, {sort: {created_at: -1}})
               .then(questions => {
-                res.render('user/info', { user, questions });
+                res.render('user/info', { session:req.user,user, questions });
               })
               .catch(error => {
                 console.log(error);

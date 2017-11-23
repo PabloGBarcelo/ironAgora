@@ -566,3 +566,20 @@ li.buttonLi {
     margin: 0 auto;
     text-align: center;
 }
+
+.authorMainProfile {
+    width: 25%;
+    margin: 0 auto;
+    border: 1px solid #d1caca;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: left;
+}
+
+.editProfile {
+    margin-left: 15px;
+}
+
+.avatarProfile{
+  vertical-align: top;
+}
