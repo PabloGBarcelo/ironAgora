@@ -14,15 +14,26 @@ router.get('/', ensureLoggedIn('/'), (req, res, next) => {
       res.render('forum/index', {results, mainTags, moment});
     })
     .catch(error => {
-      console.log('Error ocurred while fetching posts');
+      console.error('Error ocurred while fetching posts');
     });
 });
 
-router.get('/tag/:id', (req, res, next) => {
+router.get('/tags/:id', (req, res, next) => {
   let tag = req.params.id;
-  Question.find({ tags: { "$regex": tag, "$options": "i" } }, (error, results) => {
-    res.render('forum/index', {results, mainTags: [tag], moment});
-  });
+  Question.find({}, null, { sort: { created_at: -1 }})
+    .then(allResults => {
+      let mainTags = mainTagsSearch(allResults);
+      Question.find({ tags: { "$regex": tag, "$options": "i" } })
+        .then(results => {
+          res.render('forum/tags', {results, mainTags, moment});
+        })
+        .catch(error => {
+          console.error('Error ocurred while making request');
+        });
+    })
+    .catch(error => {
+      console.error('Error ocurred while fetching data');
+    });
 });
 
 router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
@@ -32,7 +43,7 @@ router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
       res.send(JSONdata);
     })
     .catch(error => {
-      console.log('Error ocurred while fetching data');
+      console.error('Error ocurred while fetching data');
     });
 });
 
