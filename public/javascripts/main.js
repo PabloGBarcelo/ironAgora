@@ -14,6 +14,11 @@ var checkNewContent = function() {
             refreshButton.remove();
           }
           $('.allPosts:first').before(`<button class="new-fetch" type="submit">+${diffQuestions} new posts</button>`);
+          $('.new-fetch').on('click', (event) => {
+            console.log('Boton pulsado');
+            event.preventDefault();
+            window.location.reload(true);
+          });
         }
       },
       error: error => {
