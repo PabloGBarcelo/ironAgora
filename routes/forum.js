@@ -4,32 +4,36 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const moment = require('moment');
 const Question = require('../models/Question');
 const Push = require('push.js');
+const mainTagsSearch = require('../utils/mainTagsSearch');
 
 router.get('/', ensureLoggedIn('/'), (req, res, next) => {
   Question.find({}, null, { sort: { created_at: -1 }}) // desc
     .populate('_authorId')
     .exec()
     .then(results => {
-      let allTags = {};
-      results.forEach(post => {
-        post.tags[0].split(',').forEach(tag => {
-          let tagUp = tag.toUpperCase();
-          if (!allTags[tagUp] && tagUp !== '') {
-            allTags[tagUp] = 1;
-          } else if (tagUp !== '') {
-            allTags[tagUp]++;
-          }
-        });
-      });
-
-      let mainTags = Object.keys(allTags);
-      mainTags.sort((keyOne, keyTwo) => {
-        return allTags[keyTwo] - allTags[keyOne];
-      }).splice(8);
+      let mainTags = mainTagsSearch(results);
       res.render('forum/index', {results, mainTags, moment});
     })
     .catch(error => {
-      console.log(error);
+      console.error('Error ocurred while fetching posts');
+    });
+});
+
+router.get('/tags/:id', (req, res, next) => {
+  let tag = req.params.id;
+  Question.find({}, null, { sort: { created_at: -1 }})
+    .then(allResults => {
+      let mainTags = mainTagsSearch(allResults);
+      Question.find({ tags: { "$regex": tag, "$options": "i" } })
+        .then(results => {
+          res.render('forum/tags', {results, mainTags, moment});
+        })
+        .catch(error => {
+          console.error('Error ocurred while making request');
+        });
+    })
+    .catch(error => {
+      console.error('Error ocurred while fetching data');
     });
 });
 
@@ -42,7 +46,7 @@ router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
       res.send(JSONdata);
     })
     .catch(error => {
-      console.log(error);
+      console.error('Error ocurred while fetching data');
     });
 });
 

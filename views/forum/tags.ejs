@@ -1,0 +1,55 @@
+<div class="navbar">
+  <img src="/images/logo.png">
+  <div class="fixed-action-btn horizontal click-to-toggle newStoryNav">
+   <a class="btn-floating btn-small white">
+     <i class="fa fa-bars" aria-hidden="true"></i>
+   </a>
+   <ul>
+     <li><a alt="logout" href="/logout" class="btn-floating smaller btn-float-top white"><i class="fa fa-sign-out btn-float-top" aria-hidden="true"></i></a></li>
+     <li><a alt="my profile" href="/user/<%=user.id%>"class="btn-floating smaller btn-float-top white"><i class="fa fa-user btn-float-top" aria-hidden="true"></i></a></li>
+     <li><a alt="New Story" href="/forum/new" class="btn-floating smaller btn-float-top white"><i class="fa fa-pencil btn-float-top" aria-hidden="true"></i></a></li>
+   </ul>
+ </div>
+  <!-- <div class="newStoryNav">
+    <a href="/forum/new">New Story</a>
+  </div> -->
+</div>
+<div class="tagsBar inline">
+  <ul class="tagsNav">
+    <a href="/"><li class="lihome">HOME</li></a>
+    <% if(mainTags!= "") { %>
+    <% mainTags.forEach(e => { %>
+      <li class="lihome"><a href="/forum/tags/<%=e%>"><%=e%></a></li>
+    <%});%>
+      <% }%>
+  </ul>
+</div>
+<div class="allPosts">
+  <% results.forEach(post => { %>
+    <div class="onePost">
+      <div class="photoMin">
+        <a class="mainTitleHref" href="/forum/<%= post.id%>/show">
+        <img class="photoForum" src="<%=post.mainPhoto%>">
+      </div>
+      <div class="detailsPost">
+        <div class="titleMin">
+            <h2><b><%-post.title%></b></h2></a>
+        </div>
+        <div class="authorMin">
+          <div class="pic">
+            <img class="authorPic" src="<%=post._authorId.avatar%>">
+          </div>
+          <div class="authorPost">
+            <a href="/user/<%=post._authorId.id%>"><span class="authorspan"><%=post._authorId.name%></span></a><br>
+            <span class="createdspan"><%=moment(post.created_at).format('llll')%></span>
+          </div>
+        </div>
+        <% if(post.tags!="") {%>
+        <div class="tagsMain">
+          Tags: <%=post.tags %>
+        </div>
+        <%}%>
+      </div>
+    </div>
+    <% }); %>
+</div>
