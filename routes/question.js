@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Question = require('../models/Question');
+const Answer = require('../models/Answer');
 
 router.get('/new', (req, res, next) => {
   console.log(req.user);
@@ -47,7 +48,15 @@ router.post('/:id/edit', (req, res, next) => {
 
 router.get('/:id/show', (req, res, next) => {
   Question.findById(req.params.id)
-          .then((results) => res.render('question/show',  results ))
+          .then((results) => {
+            Answer.find({_idQuestion: req.params.id })
+            .populate('_authorId')
+            .exec()
+            .then((resultAnswer =>{
+                res.render('question/show', {results,resultAnswer} );
+            }))
+            .catch((err) => console.log(err));
+          ;})
           .catch((err) => console.log(err));
 });
 

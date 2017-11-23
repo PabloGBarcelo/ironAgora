@@ -1,23 +1,45 @@
 <div class="navbar">
   <a href="/forum"><img src="/images/logo.png"></a>
-  <form action="/forum/<%=id%>/remove" method="post" id="deleteStory">
+  <form action="/forum/<%=results.id%>/remove" method="post" id="deleteStory">
     <button> Delete </button>
   </form>
-  <form action="/forum/<%=id%>/edit" method="get">
+  <form action="/forum/<%=results.id%>/edit" method="get">
     <div class="newStoryNav">
       <button>Edit</button>
       <a href="/forum/">Go to main</a>
     </div>
 </div>
-<% if (tags!="") {%>
+<% if (results.tags!="") {%>
 <div class="tagsShow">
-  Tags: <%=tags%>
+  Tags: <%=results.tags%>
 </div>
 <%}%>
 <div class="editable2">
-  <%-title%>
+  <%-results.title%>
 </div>
 <div class="editable">
-  <%-content%>
+  <%-results.content%>
 </div>
 </form>
+
+<form action="/forum/<%=results.id%>/newAnswer" method="post">
+  <div class="answerInPost">
+    <textarea placeholder="Write a response..." name="answer" class="newAnswer"></textarea>
+    <button class="waves-effect waves-light btn sendAnswer"><i class="material-icons left"></i>Send</button></a>
+  </div>
+</form>
+
+  <% resultAnswer.forEach(e => { %>
+    <div class="commentadded">
+      <img class ="miniavatar" src="<%=e._authorId.avatar%>">
+      <span class="commentName"><%=e._authorId.name%></span>
+      <% if(e.comment != "- message deleted by user -"){ %>
+      <form class="inline-block" action="/forum/<%=e.id%>/removeAnswer?fromStory=<%=results.id%>" method="post">
+        <button class="removeMyAnswer"><i class="fa fa-trash-o" aria-hidden="true">
+        </i></button></form>
+      <%}%>
+    <p><%= e.content %></p>
+  </div>
+  <% }) %>
+
+  // Answers here

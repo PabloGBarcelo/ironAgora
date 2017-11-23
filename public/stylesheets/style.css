@@ -412,3 +412,91 @@ div.tagsinput input {
     padding: 0;
     height: 25px;
 }
+
+.answerInPost {
+    width: 50%;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.newAnswer {
+  resize: vertical;
+  min-height: 76px;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+}
+
+.newAnswer::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+.newAnswer:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+.newAnswer::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+  opacity: 1;
+}
+.newAnswer:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+.newAnswer::-ms-input-placeholder { /* Microsoft Edge */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+
+.newAnswer::placeholder { /* Most modern browsers support this now. */
+  color: gray;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 10px;
+}
+
+.sendAnswer {
+    background: #008377;
+    width: 115px;
+    font-size: 13px;
+}
+
+.commentadded {
+  margin: 0 auto;
+  width: 40%;
+  color: gray;
+  padding: 20px;
+  border: 1px solid #f6f6f6;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.miniavatar {
+    border-radius: 50%;
+    width: 40px;
+}
+
+.commentName {
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.removeMyAnswer {
+    margin-left: 20px;
+    color: red;
+    background: none;
+    border: none;
+}
