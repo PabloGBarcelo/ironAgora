@@ -1,3 +1,4 @@
+let sw=0;
 var checkNewContent = function() {
   setInterval(() => {
     $.ajax({
@@ -9,6 +10,19 @@ var checkNewContent = function() {
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
         let diffQuestions = numResponse - numCurrentQuest;
         if (diffQuestions > 0) {
+          if (sw==0){
+            console.log("DENTRO")
+            Push.create("There is new notifications!", {
+              body: "Hey, what are you waiting to go?",
+              icon: '',
+              timeout: 4000,
+              onClick: function () {
+                  window.focus();
+                  this.close();
+              }
+            });
+            sw=1;
+          }
           let refreshButton = $('.new-fetch');
           if (refreshButton) {
             refreshButton.remove();
