@@ -1,11 +1,12 @@
+require('dotenv').config();
 const passport = require("passport");
 const User = require('../models/User');
 const SlackStrategy = require('passport-slack').Strategy;
 
 passport.use(new SlackStrategy({
-    clientID: '2432150752.275834354901',
-    clientSecret: '1b8443b140f62b601d0cfbe105a7cbfb',
-    callbackURL: "http://localhost:3000/auth/slack/callback",
+    clientID: process.env.slackClientId,
+    clientSecret: process.env.slackClientSecret,
+    callbackURL: process.env.slackCallbackURL,
     scope:  ['identity.basic', 'identity.email', 'identity.avatar', 'identity.team']
   },
   (accessToken, refreshToken, profile, cb) => {
@@ -21,7 +22,7 @@ passport.use(new SlackStrategy({
             avatar: profile.user.image_192,
             forum: 'UX'
           });
-          
+
           newUser.save((err) => {
             if (err) { return cb(err); }
             cb(null, newUser);
