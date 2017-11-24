@@ -23,7 +23,8 @@ router.get('/tags/:id', (req, res, next) => {
   Question.find({}, null, { sort: { created_at: -1 }})
     .then(allResults => {
       let mainTags = mainTagsSearch(allResults);
-      Question.find({ tags: { "$regex": tag, "$options": "i" } })
+      Question.find({ tags: { "$regex": tag, "$options": "i" } }, null, { sort: { created_at: -1 }})
+        .populate('_authorId')
         .then(results => {
           res.render('forum/tags', {results, mainTags, moment});
         })
