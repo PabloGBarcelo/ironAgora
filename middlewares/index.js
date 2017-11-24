@@ -13,5 +13,5 @@ module.exports = function (postId) {
         console.log('Error while fetching data');
       });
 
-  }
+  };
 };
