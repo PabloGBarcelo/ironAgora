@@ -21,7 +21,7 @@ var checkNewContent = function() {
         }
       },
       error: error => {
-        console.log(error);
+        console.error('Error ocurred while updating new posts');
       }
     });
   }, 3000);
