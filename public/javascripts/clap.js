@@ -4,7 +4,7 @@ var addClap = function(path) {
     url: 'http://localhost:3000' + path,
     dataType: 'json',
     success: response => {
-      $('button[name|="clap"]').text(`Claps +${response.claps}`);
+      $('button[name|="clap"]').text(`+${response.claps}`);
     },
     error: error => {
       console.error('Error ocurred while adding clap');
