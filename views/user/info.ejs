@@ -13,6 +13,9 @@
     </div>
   </div>
   <a href="/"><img class="imgWitha" src="/images/logo.png"></a>
+  <div class="menuTopBack inline-block">
+    <span class="goback"><a href="/">Back</a></span>
+  </div>
 </div>
 
 <div class="allUserPosts">
@@ -25,18 +28,10 @@
       <div class="detailsPost">
         <div class="titleMin">
           <p>
-            <%- question.title %></a>
+            <%- question.title.replace(/<(?:.|\n)*?>/gm, '') %></a>
           </p>
         </div>
-        <div class="authorMin">
-          <div class="pic">
-            <img class="authorPic" src="<%= question._authorId.avatar %>">
-          </div>
-          <div class="authorPost">
-            <a href="/user/<%= question._authorId.id %>"><span class="authorspan"><%= question._authorId.username %></span></a><br>
-            <span class="createdspan"><%= question.created_at %></span>
-          </div>
-        </div>
+
       </div>
     </div>
     <% }); %>

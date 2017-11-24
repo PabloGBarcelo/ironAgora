@@ -4,7 +4,6 @@ const Question = require('../models/Question');
 const Answer = require('../models/Answer');
 
 router.get('/new', (req, res, next) => {
-  console.log(req.user);
   res.render('question/new', { medium: 1});
 });
 

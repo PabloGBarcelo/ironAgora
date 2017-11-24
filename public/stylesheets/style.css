@@ -164,7 +164,6 @@ a {
   border: 1px solid #e1e1e1;
   flex-basis: 31%;
   margin: 10px;
-  height: 275px;
 }
 
 .allPosts{
@@ -619,4 +618,286 @@ a.retweet {
     background: #3aabfc;
     font-size: 12px;
     margin-left: 10px;
+}
+
+a.retweet.mobile{
+  display:none;
+}
+@media (max-width: 768px) and (min-width: 424px){
+  .onePost{
+    flex-basis: 45%;
+  }
+
+  .newStoryNav {
+    top: 26px;
+    right: 102px;
+  }
+
+  .answerInPost {
+    width: 60%;
+  }
+  .commentadded{
+    width: 60%;
+  }
+
+  .fixed-action-btn{
+    right: 33px;
+    top: 15px;
+  }
+
+  .authorMainProfile {
+    width: 30%;
+  }
+
+  .menuTopBack {
+    position: absolute;
+    top: 26px;
+    right: 97px;
+  }
+
+  .goback a{
+    color: black;
+  }
+
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #a3a3a347;
+    color: white;
+    cursor: pointer;
+    width: 52px;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+  #myBtn:hover {
+      background-color: #555; /* Add a dark-grey background on hover */
+  }
+
+}
+@media (max-width: 425px){
+  .newStoryNav {
+    right: 33px;
+    top: 23px;
+  }
+  .onePost {
+      border: none;
+      flex-basis: 100%;
+      margin: 0;
+  }
+  .allPosts{
+    width: 100%;
+  }
+
+  .tagsNav li:not(:first-child){
+    display: none;
+  }
+
+  .tagsNav{
+    text-align: center;
+  }
+
+  .fixed-action-btn.horizontal ul {
+    height: 190px;
+    right: -14px;
+    width: 100px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .tagsMain{
+    color: #f6f6f6;
+    border: none;
+    background: #f6f6f6;
+    height: 8px;
+  }
+
+  .editable, .editable2{
+    width: 90%;
+  }
+
+  .editable2 h2{
+    font-size: 25px;
+  }
+  .figure{
+    margin: 0;
+  }
+
+  .secondBar {
+    width: 90%;
+  }
+
+  .commentadded{
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 0;
+  }
+
+  .answerInPost {
+    width: 90%;
+  }
+
+  .sendAnswer{
+    width: 100%;
+  }
+
+  .removeMyAnswer{
+    font-size: 26px;
+    padding: 0;
+  }
+
+  button.publish.red.whitecolor {
+    color: #ba4d4d !important;
+    background: white !important;
+    border: 1px solid #ba4d4d;
+    border-radius: 19px;
+    width: 100%;
+    height: 30px;
+  }
+
+  .figure{
+    width: 100%;
+    margin: 0;
+  }
+
+  .authorAvatar {
+    width: 20%;
+  }
+
+  .textAuthor{
+    vertical-align: top;
+    margin-top: 8px;
+  }
+  a.retweet{
+    display: none;
+  }
+  a.retweet.mobile{
+    border-radius: 20px;
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+    border: 1px solid #3aabfc;
+    padding: 5px;
+    color: #3aabfc;
+    background: #ffffff;
+  }
+  #deleteStory{
+    width: 100%;
+  }
+  .delete {
+    width: 46%;
+    margin-top: 9px;
+  }
+  .delete form{
+    width: 100%;
+  }
+
+  .secondBar{
+    margin-top: 8px;
+  }
+
+  .imgWitha {
+    padding: 8px;
+    width: 100px;
+    margin-top: 8px;
+    padding-bottom: 2px;
+  }
+
+  .tagsOfPost{
+    display: none;
+  }
+
+  .authorMainProfile{
+    width: 100%;
+    text-align: center;
+    position: static;
+    text-align: left;
+  }
+
+  .editProfile {
+    display: inline-block;
+  }
+
+  .textAuthorProfile {
+    margin-top: 8px;
+  }
+
+  .swal2-popup .swal2-styled{
+    padding: 5px 22px;
+    font-size: 14px;
+  }
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: -13px;
+    right: 7px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    color: #a3a3a3;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid wheat;
+  }
+
+  #myBtn:hover {
+      background-color: #555; /* Add a dark-grey background on hover */
+  }
+  .navbar {
+    text-align: left;
+  }
+
+  .menuTopBack {
+    text-align: right;
+    width: 57%;
+    vertical-align: top;
+    margin-top: 17px;
+  }
+
+  span.goback a {
+      color: black;
+  }
+
+  .imgWitha img{
+    width: 100px;
+    padding: 7px;
+  }
+
+  .navbar a > img {
+    padding: 8px;
+    width: 100px;
+    margin-top: 8px;
+    padding-bottom: 2px
+  }
+
+  .newStoryNavMain {
+    right: 33px;
+    top: 15px;
+  }
+
+  .loginCenter{
+    width: 100%;
+  }
+  .textLogin > h2{
+    display: none;
+  }
+
+  .container{
+    width: 95%;
+  }
+
+  .btn-slack,.btn-github{
+    width: 85%;
+    height: 60px;
+  }
+
+  .btn > a{
+    font-size: 12px;
+  }
 }
