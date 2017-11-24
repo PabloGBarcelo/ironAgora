@@ -12,6 +12,7 @@ var checkNewContent = function() {
         let diffQuestions = numResponse - numCurrentQuest;
         if (diffQuestions > 0) {
           if (sw==0 || diffQuestions-sw > 0){
+            console.log(response['results']);
             Push.create("There is new posts!", {
               body: response['results'][response['results'].length-1].title.replace(/<(?:.|\n)*?>/gm, ''),
               icon: '/images/nophoto.png',

@@ -38,7 +38,7 @@ router.get('/tags/:id', (req, res, next) => {
 });
 
 router.get('/check', ensureLoggedIn('/'), (req, res, next) => {
-  Question.find()
+  Question.find({}, null, { sort: { created_at: -1 }})
     .then(results => {
       let JSONdata = JSON.stringify({results});
       res.send(JSONdata);
