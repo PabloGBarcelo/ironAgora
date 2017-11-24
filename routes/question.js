@@ -74,7 +74,7 @@ router.get('/:id/show', (req, res, next) => {
               });
             }))
             .catch((err) => {
-              console.log(err)
+              console.log(err);
             });
           })
           .catch((err) => {
