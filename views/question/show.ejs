@@ -17,18 +17,22 @@
       <div class="textAuthor inline-block">
         <span class="author"><%=results._authorId.name%></span>
         <% if (results.tags!="") {%>
-            <span><%=results.tags%></span>
+            <span class="tagsOfPost"><%=results.tags%></span>
         <%}%>
       </div>  <% if (user._id.equals(results._authorId._id)) { %>
-      <div class="inline-block">
+      <div class="inline-block delete">
         <form class="inline-block" action="/forum/<%=results.id%>/delete" method="post" id="deleteStory">
-          <button class="publish red whitecolor"> Delete article</button>
+          <button class="publish red whitecolor"> Delete</button>
         </form>
       </div>
       <%}%>
-      <a class="retweet" href="http://kanishkkunal.in"
+      <a class="retweet"
         target="popup"
         onclick="window.open('https://twitter.com/intent/tweet?text=<%=results.title.replace(/<(?:.|\n)*?>/gm, '');%> @ironAgora','popup','width=600,height=300'); return false;">
+          Retweet
+      </a>
+      <a class="retweet mobile"
+        href='https://twitter.com/intent/tweet?text=<%=results.title.replace(/<(?:.|\n)*?>/gm, '');%> @ironAgora'>
           Retweet
       </a>
     </div>
@@ -37,7 +41,6 @@
         <button name="clap" class="">Clap</button>
       </form>
     </div>
-
 </div>
 <div class="editable2">
   <%-results.title%>
