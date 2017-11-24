@@ -10,8 +10,7 @@ var checkNewContent = function() {
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
         let diffQuestions = numResponse - numCurrentQuest;
         if (diffQuestions > 0) {
-          if (sw==0){
-            console.log("DENTRO")
+          if (sw==0 || diffQuestions-sw > 0){
             Push.create("There is new notifications!", {
               body: "Hey, what are you waiting to go?",
               icon: '',
@@ -21,17 +20,18 @@ var checkNewContent = function() {
                   this.close();
               }
             });
-            sw=1;
+            let refreshButton = $('.newPostAdded');
+            if (refreshButton) {
+              refreshButton.remove();
+            }
+            $('.allPosts:first').before(`<div class="newPostAdded"><button class="new-fetch" type="submit">+${diffQuestions} new posts</button></div>`);
+            $('.new-fetch').on('click', (event) => {
+              event.preventDefault();
+              window.location.reload(true);
+            });
+            sw=diffQuestions;
           }
-          let refreshButton = $('.new-fetch');
-          if (refreshButton) {
-            refreshButton.remove();
-          }
-          $('.allPosts:first').before(`<div class="newPostAdded"><button class="new-fetch" type="submit">+${diffQuestions} new posts</button></div>`);
-          $('.new-fetch').on('click', (event) => {
-            event.preventDefault();
-            window.location.reload(true);
-          });
+
         }
       },
       error: error => {
