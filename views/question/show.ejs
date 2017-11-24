@@ -26,19 +26,20 @@
         </form>
       </div>
       <%}%>
+      <div class="inline-block retweetdiv">
       <a class="retweet"
         target="popup"
         onclick="window.open('https://twitter.com/intent/tweet?text=<%=results.title.replace(/<(?:.|\n)*?>/gm, '');%> @ironAgora','popup','width=600,height=300'); return false;">
-          Retweet
+          <i class="fa fa-twitter" aria-hidden="true"></i>
       </a>
       <a class="retweet mobile"
         href='https://twitter.com/intent/tweet?text=<%=results.title.replace(/<(?:.|\n)*?>/gm, '');%> @ironAgora'>
-          Retweet
+          <i class="fa fa-twitter" aria-hidden="true"></i>
       </a>
     </div>
-    <div>
-      <form id="add-clap" action="/clap/<%= results._id %>" method="post">
-        <button name="clap" class="">Claps +<%= numClaps %></button>
+    <div class="letsclap inline-block">
+      <form class="formaddclap" id="add-clap" action="/clap/<%= results._id %>" method="post">
+        <button class="button-add-clap" name="clap" class=""><i class="fa fa-thumbs-o-up" aria-hidden="true">+<%= numClaps %></i></button>
       </form>
     </div>
 </div>

@@ -164,6 +164,7 @@ a {
   border: 1px solid #e1e1e1;
   flex-basis: 31%;
   margin: 10px;
+  min-height: 275px;
 }
 
 .allPosts{
@@ -623,7 +624,110 @@ a.retweet {
 a.retweet.mobile{
   display:none;
 }
-@media (max-width: 768px) and (min-width: 424px){
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #a3a3a347;
+  color: white;
+  cursor: pointer;
+  width: 52px;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.fixed-action-btn{
+  right: 44px;
+  top: 14px
+}
+
+i.fa.fa-hand-spock-o {
+    color: #29ccbd;
+}
+
+i.fa.fa-thumbs-o-up {
+  color: #16b9aa;
+  font-size: 30px;
+}
+
+.retweetdiv {
+    width: 6%;
+}
+
+.button-add-clap {
+  border: 1px solid #15b9aa;
+  border-radius: 50%;
+  background: white;
+  padding: 5px 10px;
+}
+.button-add-clap:hover {
+  border: 1px solid white;
+  border-radius: 50%;
+  background: #15b9aa;
+  padding: 10px 15px;
+  margin-left: 10px;
+}
+i.fa.fa-thumbs-o-up:hover {
+  color: white;
+  font-size: 30px;
+}
+.goback a {
+    position: absolute;
+    top: 48px;
+    color: black;
+    right: 12%;
+}
+@media (max-width: 1071px) and (min-width: 768px){
+  .onePost{
+    height: 287px;
+    flex-basis: 30%;
+  }
+  .authorMainProfile{
+    width: 30%;
+  }
+  .retweetdiv {
+    width: 9%;
+}
+}
+@media (max-width: 767px) and (min-width: 424px){
+  .navbar a > img {
+      padding: 8px;
+      width: 100px;
+      margin-top: 8px;
+      padding-bottom: 2px;
+  }
+
+  .textAuthorProfile {
+      margin-top: 10px;
+  }
+
+  .editProfile {
+    display: inline-block;
+}
+  .tagsNav{
+    display:none;
+  }
+
+  .button-add-clap{
+    padding: 3px 8px;
+  }
+  .retweetdiv {
+    width: 7%;
+  }
+
+  i.fa.fa-thumbs-o-up {
+    color: #16b9aa;
+    font-size: 21px;
+  }
   .onePost{
     flex-basis: 45%;
   }
@@ -679,8 +783,94 @@ a.retweet.mobile{
       background-color: #555; /* Add a dark-grey background on hover */
   }
 
+  .authorMainProfile{
+    width: 100%;
+    text-align: center;
+    position: static;
+    text-align: left;
+  }
+  .goback a {
+    position: absolute;
+    top: 40px;
+    color: black;
+  }
+
+  .navbar{
+    text-align: left;
+  }
+
+  .newStoryNav{
+    right: 75px;
+  }
+  .editable2 h2{
+    font-size: 28px;
+  }
+
+  .secondBar{
+    width: 80%;
+  }
+  .formaddclap {
+    width: 15%;
+  }
+  .authorMain {
+    width: 100%;
+  }
+
+  i.fa.fa-thumbs-o-up {
+    color: #16b9aa;
+    font-size: 30px;
+  }
+
+  .button-add-clap {
+    border: 1px solid #15b9aa;
+    border-radius: 50%;
+    background: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+  }
+  .button-add-clap:hover {
+    border: 1px solid white;
+    border-radius: 50%;
+    background: #15b9aa;
+    padding: 10px 15px;
+    margin-left: 10px;
+  }
+  i.fa.fa-thumbs-o-up:hover {
+    color: white;
+    font-size: 30px;
+  }
+
+  .onePost{
+    height: 316px;
+  }
+
+  .titleMin{
+    min-height: 90px;
+  }
 }
 @media (max-width: 425px){
+  a.retweet.mobile {
+      border-radius: 50%;
+      padding: 0px 14px;
+      text-align: center;
+  }
+  i.fa.fa-twitter {
+      padding: 0px 14px;
+      width: 100%;
+      text-align: center;
+      text-align: left;
+      margin-right: 40px;
+  }
+
+  .retweetdiv {
+    width: 29%;
+  }
+  .textAuthor{
+    width: 75%;
+  }
+  .photoMin{
+    height: 150px;
+  }
   .newStoryNav {
     right: 33px;
     top: 23px;
@@ -778,7 +968,7 @@ a.retweet.mobile{
   a.retweet.mobile{
     border-radius: 20px;
     display: inline-block;
-    width: 49%;
+    width: 70%;
     text-align: center;
     border: 1px solid #3aabfc;
     padding: 5px;
@@ -786,10 +976,10 @@ a.retweet.mobile{
     background: #ffffff;
   }
   #deleteStory{
-    width: 100%;
+    width: 90%;
   }
   .delete {
-    width: 46%;
+    width: 35%;
     margin-top: 9px;
   }
   .delete form{
@@ -899,5 +1089,9 @@ a.retweet.mobile{
 
   .btn > a{
     font-size: 12px;
+  }
+
+  .allUserPosts{
+    width: 100%;
   }
 }
