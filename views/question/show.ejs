@@ -22,7 +22,7 @@
       </div>  <% if (user._id.equals(results._authorId._id)) { %>
       <div class="inline-block delete">
         <form class="inline-block" action="/forum/<%=results.id%>/delete" method="post" id="deleteStory">
-          <button class="publish red whitecolor"> Delete</button>
+          <button class="publish red whitecolor"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
         </form>
       </div>
       <%}%>
