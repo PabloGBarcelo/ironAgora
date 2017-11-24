@@ -1,7 +1,7 @@
 var addClap = function(path) {
   $.ajax({
     method: 'POST',
-    url: 'http://localhost:3000' + path,
+    url: path,
     dataType: 'json',
     success: response => {
       $('button[name|="clap"]').text(`+${response.claps}`);

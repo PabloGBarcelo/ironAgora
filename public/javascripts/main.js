@@ -3,7 +3,7 @@ var checkNewContent = function() {
   setInterval(() => {
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:3000/forum/check',
+      url: '/forum/check',
       dataType: 'json',
       success: response => {
         console.log();
@@ -14,7 +14,7 @@ var checkNewContent = function() {
           if (sw==0 || diffQuestions-sw > 0){
             Push.create("There is new posts!", {
               body: response['results'][response['results'].length-1].title.replace(/<(?:.|\n)*?>/gm, ''),
-              icon: 'http://localhost:3000/images/nophoto.png',
+              icon: '/images/nophoto.png',
               timeout: 4000,
               onClick: function () {
                   window.focus();
