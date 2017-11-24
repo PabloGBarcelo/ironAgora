@@ -6,14 +6,15 @@ var checkNewContent = function() {
       url: 'http://localhost:3000/forum/check',
       dataType: 'json',
       success: response => {
+        console.log();
         let numResponse = response['results'].length;
         let numCurrentQuest = document.getElementsByClassName('onePost').length;
         let diffQuestions = numResponse - numCurrentQuest;
         if (diffQuestions > 0) {
           if (sw==0 || diffQuestions-sw > 0){
-            Push.create("There is new notifications!", {
-              body: "Hey, what are you waiting to go?",
-              icon: '',
+            Push.create("There is new posts!", {
+              body: response['results'][response['results'].length-1].title.replace(/<(?:.|\n)*?>/gm, ''),
+              icon: 'http://localhost:3000/images/nophoto.png',
               timeout: 4000,
               onClick: function () {
                   window.focus();
