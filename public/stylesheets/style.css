@@ -132,6 +132,7 @@ a {
     text-align: center;
   }
 
+
   .newStoryNav > a {
       text-decoration: none;
       color: black;
@@ -700,6 +701,10 @@ i.fa.fa-thumbs-o-up {
     top: 48px;
     color: black;
     right: 12%;
+}
+.sponsored{
+  border: 2px solid deepskyblue;
+  box-shadow: 0px 3px 24px deepskyblue;
 }
 @media (max-width: 1071px) and (min-width: 768px){
   .onePost{

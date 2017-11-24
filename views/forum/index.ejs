@@ -24,7 +24,11 @@
 </div>
 <div class="allPosts">
   <% results.forEach(post => { %>
+<% if(post.tags[0].includes('sponsored')){ %>
+  <div class="onePost sponsored">
+    <% } else { %>
     <div class="onePost">
+      <% } %>
       <div class="photoMin">
         <a class="mainTitleHref" href="/forum/<%= post.id%>/show">
         <img class="photoForum" src="<%=post.mainPhoto%>">
