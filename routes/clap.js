@@ -12,25 +12,10 @@ router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
 
   newClap.saveAndFind((error, claps) => {
     if (error) { return next(error); }
-    let JSONdata = JSON.stringify({claps: claps.length});
+    let postClaps = claps.filter(clap => { return clap._idQuestion == req.params.id; });
+    let JSONdata = JSON.stringify({ claps: postClaps.length });
     res.send(JSONdata);
   });
 });
-
-
-//router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
-//  let backURL = req.header('Referer') || '/';
-//  console.log(backURL);
-//
-//  const newClap = new Clap({
-//    _idQuestion: req.params.id,
-//    _authorId: req.user.id,
-//  });
-//
-//  newClap.save(error => {
-//    if (error) { return next(error); }
-//    res.redirect(backURL);
-//  });
-//});
 
 module.exports = router;

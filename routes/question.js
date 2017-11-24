@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
+const Clap = require('../models/Clap');
 
 router.get('/new', (req, res, next) => {
   res.render('question/new', { medium: 1});
@@ -59,16 +60,26 @@ router.get('/:id/show', (req, res, next) => {
           .populate('_authorId')
           .exec()
           .then((results) => {
-            Answer.find({_idQuestion: req.params.id },null, {sort: {created_at: -1}})
+            Answer.find({ _idQuestion: req.params.id }, null, {sort: {created_at: -1}})
             .populate('_authorId')
             .exec()
-            .then((resultAnswer =>{
-              console.log(results);
-                res.render('question/show', {user:req.user,results,resultAnswer} );
+            .then((resultAnswer => {
+              Clap.find({ _idQuestion: req.params.id })
+              .then(claps => {
+                let numClaps = claps.length;
+                res.render('question/show', { user: req.user, results, resultAnswer, numClaps });
+              })
+              .catch(error => {
+                console.error('Error ocurred while making request');
+              });
             }))
-            .catch((err) => console.log(err));
-          ;})
-          .catch((err) => console.log(err));
+            .catch((err) => {
+              console.log(err)
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
 });
 
 router.post('/:id/delete', (req, res, next) => {
